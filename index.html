@@ -1,609 +1,1431 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <title>Putri Yuni Utami</title>
+  <title>Putri Yuni Utami — Language &amp; Content Specialist</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.png">
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="author" content="">
-  <meta name="keywords" content="">
-  <meta name="description" content="">
-  <link rel="stylesheet" type="text/css" href="css/vendor.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+  <meta name="description" content="Putri Yuni Utami — QA Specialist, Technical Editor, Translator, and Content Writer based in Yogyakarta, Indonesia.">
+  <meta name="keywords" content="technical editor, translator, QA specialist, content writer, English Indonesian translation, proofreading, Yogyakarta">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+/* ─────────────────────────────────────────
+   DESIGN TOKENS — Original palette kept
+───────────────────────────────────────── */
+:root {
+  --primary:    #f3c33b;
+  --primary-dk: #7d6c2c;
+  --primary-lt: #FDEEE9;
+  --ink:        #111111;
+  --dark:       #212529;
+  --gray:       #949494;
+  --gray-dk:    #51565b;
+  --light:      #F1F1F0;
+  --white:      #ffffff;
+  --border:     #e8e8e6;
+  --font:       "Roboto", Verdana, sans-serif;
+  --mono:       "Roboto Mono", monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--dark);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; transition: all .25s ease; }
+a:hover { color: var(--primary); }
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: var(--font);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+/* ── MOBILE MENU BTN ── */
+.menu-btn {
+  display: none;
+  position: fixed; top: 20px; right: 20px;
+  width: 26px; height: 26px;
+  cursor: pointer; z-index: 200;
+  margin: 12px;
+}
+.menu-btn > span,
+.menu-btn > span::before,
+.menu-btn > span::after {
+  display: block; position: absolute;
+  width: 100%; height: 2px;
+  background: var(--ink);
+  transition: .25s;
+}
+.menu-btn > span::before { content:''; top: -8px; }
+.menu-btn > span::after  { content:''; top:  8px; }
+.nav-active .menu-btn > span { transform: rotate(45deg); }
+.nav-active .menu-btn > span::before { top: 0; transform: rotate(0); }
+.nav-active .menu-btn > span::after  { top: 0; transform: rotate(90deg); }
+
+/* ── SIDEBAR NAV ── */
+header {
+  position: fixed; left: 0; top: 0;
+  width: 220px; height: 100vh;
+  background: var(--white);
+  border-right: 1px solid var(--border);
+  z-index: 100;
+  display: flex; flex-direction: column;
+  padding: 2.5rem 1.8rem;
+  overflow-y: auto;
+}
+
+.site-logo img { max-width: 120px; margin-bottom: 1.5rem; }
+.site-logo-text {
+  font-size: 1.1rem; font-weight: 700;
+  letter-spacing: -0.02em; color: var(--ink);
+  margin-bottom: 0.2rem;
+}
+.site-logo-sub {
+  font-size: 0.7rem; color: var(--gray);
+  text-transform: uppercase; letter-spacing: 0.12em;
+}
+
+.sidebar-email {
+  display: block; font-size: 0.72rem;
+  color: var(--gray-dk); word-break: break-all;
+  padding: 0.8rem 0; border-bottom: 1px solid var(--border);
+  margin-bottom: 1rem;
+}
+.sidebar-email:hover { color: var(--primary); }
+
+.sidebar-socials {
+  display: flex; flex-wrap: wrap; gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+.sidebar-socials a {
+  color: var(--gray-dk); display: flex; align-items: center;
+  transition: color .2s;
+}
+.sidebar-socials a:hover { color: var(--primary); }
+
+#one-page-menu { margin-top: 0.5rem; }
+#one-page-menu ul { list-style: none; }
+#one-page-menu .nav-link {
+  display: block; font-size: 0.82rem;
+  color: var(--ink); padding: 0.65rem 0;
+  border-bottom: 1px solid var(--border);
+  position: relative; transition: color .2s;
+}
+#one-page-menu .nav-link::after {
+  content: ''; position: absolute;
+  bottom: -1px; left: 0;
+  height: 1px; width: 0;
+  background: var(--ink);
+  transition: width .4s ease;
+}
+#one-page-menu .nav-link:hover,
+#one-page-menu .nav-link.active { color: var(--primary); }
+#one-page-menu .nav-link:hover::after,
+#one-page-menu .nav-link.active::after { width: 100%; background: var(--primary); }
+
+.sidebar-avail {
+  margin-top: auto; padding-top: 1.5rem;
+  font-size: 0.7rem;
+}
+.avail-dot {
+  display: inline-block; width: 7px; height: 7px;
+  background: #22c55e; border-radius: 50%;
+  margin-right: 0.4rem;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity:1; }
+  50%      { opacity:.4; }
+}
+
+/* ── MAIN CONTENT ── */
+main { margin-left: 220px; }
+
+.content-wrap { max-width: 1100px; padding: 0 3rem; }
+@media (min-width: 1400px) { .content-wrap { max-width: 1200px; } }
+
+/* ── BG WATERMARK TEXT ── */
+.bg-text { position: relative; }
+.bg-text::after {
+  content: attr(data-text);
+  position: absolute; right: -2%;
+  top: 50%; transform: translateY(-50%);
+  font-weight: 900;
+  font-size: clamp(8rem, 18vw, 22rem);
+  line-height: 1;
+  letter-spacing: -0.08em;
+  color: rgba(0,0,0,0.035);
+  z-index: 0; pointer-events: none;
+  user-select: none;
+}
+
+section { position: relative; z-index: 1; }
+
+/* ── SECTION META ── */
+.section-meta {
+  font-family: var(--mono); font-size: 0.7rem;
+  text-transform: uppercase; letter-spacing: 0.15em;
+  color: var(--gray); margin-bottom: 0.5rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.section-meta::before {
+  content: ''; display: inline-block;
+  width: 20px; height: 1px; background: var(--gray);
+}
+
+/* ── HERO ── */
+#home { padding: 5rem 0 4rem; }
+
+.hero-photo-wrap {
+  position: relative; display: inline-block;
+}
+.hero-photo {
+  width: 100%; max-width: 440px;
+  aspect-ratio: 3/4; object-fit: cover;
+  display: block;
+}
+.hero-photo-placeholder {
+  width: 100%; max-width: 440px;
+  aspect-ratio: 3/4;
+  background: var(--light);
+  border: 2px dashed var(--border);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 0.8rem; color: var(--gray);
+  font-size: 0.8rem; text-align: center; padding: 2rem;
+}
+.hero-photo-placeholder span { font-size: 2.5rem; opacity: 0.3; }
+
+.hero-badge {
+  position: absolute; bottom: -1rem; right: -1.5rem;
+  background: var(--primary); color: var(--white);
+  padding: 1rem 1.4rem; font-size: 0.75rem;
+  font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; line-height: 1.4;
+  box-shadow: 0 8px 24px rgba(234, 128, 6, 0.3);
+}
+
+.display-xl {
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 900; letter-spacing: -0.04em;
+  line-height: 0.95; color: var(--ink);
+}
+
+.hero-tagline {
+  font-size: 0.78rem; font-family: var(--mono);
+  text-transform: uppercase; letter-spacing: 0.15em;
+  color: var(--gray); margin-bottom: 1rem;
+}
+
+.hero-desc {
+  font-size: 1rem; line-height: 1.75;
+  color: var(--gray-dk); max-width: 480px;
+  margin-bottom: 2rem;
+}
+
+.hero-stats {
+  display: flex; gap: 2.5rem; margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.hero-stat {
+  border-left: 3px solid var(--primary);
+  padding-left: 1rem;
+}
+.hero-stat-num {
+  font-size: 1.8rem; font-weight: 900;
+  color: var(--ink); line-height: 1;
+}
+.hero-stat-label {
+  font-size: 0.7rem; color: var(--gray);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+
+.hero-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+
+.btn-primary-custom {
+  background: var(--primary); color: var(--white);
+  padding: 0.8rem 2rem; font-size: 0.85rem;
+  font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; border: none;
+  cursor: pointer; transition: background .2s;
+  display: inline-block;
+}
+.btn-primary-custom:hover { background: var(--primary-dk); color: var(--white); }
+.btn-outline-custom {
+  border: 2px solid var(--ink); color: var(--ink);
+  padding: 0.8rem 2rem; font-size: 0.85rem;
+  font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; display: inline-block;
+  transition: all .2s;
+}
+.btn-outline-custom:hover { background: var(--ink); color: var(--white); }
+
+/* Role cards */
+.role-cards { margin-top: 3.5rem; }
+.icon-box {
+  padding: 2rem 1.5rem;
+  border-top: 3px solid var(--primary);
+  background: var(--light);
+  height: 100%; transition: all .25s;
+}
+.icon-box:hover {
+  background: var(--white);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+  transform: translateY(-4px);
+}
+.icon-box > span {
+  display: block; font-size: 0.7rem;
+  font-family: var(--mono); color: var(--primary);
+  letter-spacing: 0.15em; margin-bottom: 0.8rem;
+}
+.icon-box h3 {
+  font-size: 1rem; margin-bottom: 0.7rem;
+  font-weight: 700;
+}
+.icon-box p { font-size: 0.85rem; color: var(--gray-dk); line-height: 1.7; }
+
+/* ── MARQUEE ── */
+.marquee-band {
+  background: var(--ink); color: var(--white);
+  padding: 0.85rem 0; overflow: hidden;
+  margin: 3rem 0;
+}
+.marquee-track {
+  display: flex; gap: 2.5rem; white-space: nowrap;
+  animation: marquee 28s linear infinite;
+}
+.marquee-item {
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  flex-shrink: 0; display: flex; align-items: center; gap: 1rem;
+}
+.marquee-dot { width: 5px; height: 5px; background: var(--primary); border-radius: 50%; }
+@keyframes marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+
+/* ── EDUCATION & EXPERIENCE ── */
+#about { padding: 4rem 0 2rem; }
+
+.section-title { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0; }
+
+.timeline-block { margin-bottom: 3rem; }
+.timeline-date {
+  font-family: var(--mono); font-size: 0.7rem;
+  color: var(--primary); letter-spacing: 0.1em;
+  text-transform: uppercase; margin-bottom: 0.4rem;
+}
+.timeline-title {
+  font-size: 1.05rem; font-weight: 700; margin-bottom: 0.2rem;
+}
+.timeline-company {
+  font-size: 0.82rem; color: var(--gray); margin-bottom: 0.7rem;
+  font-style: italic;
+}
+.timeline-body { font-size: 0.88rem; color: var(--gray-dk); line-height: 1.75; }
+.timeline-badges {
+  display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem;
+}
+.t-badge {
+  background: var(--primary-lt); color: var(--primary-dk);
+  font-size: 0.7rem; padding: 0.2rem 0.6rem;
+  font-weight: 600; letter-spacing: 0.04em;
+}
+
+.timeline-sep {
+  border: none; height: 1px;
+  background: var(--border); margin: 2rem 0;
+}
+
+/* ── ABOUT ME ── */
+#experience { padding: 4rem 0; }
+
+.info-table th {
+  font-size: 0.78rem; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--gray-dk);
+  font-weight: 500; padding: 0.7rem 1rem 0.7rem 0;
+  width: 120px; border-top: 0; border-bottom: 1px solid var(--border);
+}
+.info-table td {
+  font-size: 0.88rem; padding: 0.7rem 0;
+  border-top: 0; border-bottom: 1px solid var(--border);
+}
+
+/* skill bars */
+.skill-item { margin-bottom: 1.5rem; }
+.skill-header { display: flex; justify-content: space-between; margin-bottom: 0.4rem; }
+.skill-name { font-size: 0.85rem; font-weight: 500; }
+.skill-pct { font-family: var(--mono); font-size: 0.75rem; color: var(--primary); }
+.skill-bar-bg {
+  height: 4px; background: var(--border); border-radius: 10px; overflow: hidden;
+}
+.skill-bar-fill {
+  height: 100%; background: var(--primary); border-radius: 10px;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 1.2s cubic-bezier(.23,1,.32,1);
+}
+.skill-bar-fill.animated { transform: scaleX(1); }
+
+/* ── SERVICES ── */
+#services { padding: 4rem 0; background: var(--light); }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border);
+  margin-top: 2.5rem;
+}
+.service-card {
+  background: var(--white); padding: 2rem 1.8rem;
+  position: relative; overflow: hidden;
+  transition: background .25s;
+}
+.service-card::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 3px;
+  background: var(--primary);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .3s;
+}
+.service-card:hover { background: var(--primary-lt); }
+.service-card:hover::after { transform: scaleX(1); }
+.service-num {
+  font-family: var(--mono); font-size: 0.65rem;
+  color: var(--primary); letter-spacing: 0.15em;
+  margin-bottom: 1rem; display: block;
+}
+.service-card h4 { font-size: 1rem; margin-bottom: 0.6rem; }
+.service-card p { font-size: 0.83rem; color: var(--gray-dk); line-height: 1.7; margin-bottom: 0.8rem; }
+.service-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.service-tag {
+  font-size: 0.65rem; padding: 0.15rem 0.5rem;
+  border: 1px solid var(--border); color: var(--gray);
+  background: var(--light);
+}
+
+/* ── METRICS ── */
+.metrics-strip {
+  background: var(--primary); color: var(--white);
+  padding: 3rem 0; margin: 0;
+}
+.metric-item { text-align: center; }
+.metric-num {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900; line-height: 1;
+  margin-bottom: 0.4rem; letter-spacing: -0.02em;
+}
+.metric-label {
+  font-size: 0.75rem; text-transform: uppercase;
+  letter-spacing: 0.1em; opacity: 0.85; line-height: 1.4;
+}
+
+/* ── RESUME & CV ── */
+#resumeandcv { padding: 4rem 0; }
+
+.download-card {
+  background: var(--light); padding: 2rem;
+  display: flex; flex-direction: column;
+  align-items: flex-start; gap: 0.8rem;
+  border-top: 3px solid var(--primary);
+  transition: all .25s;
+}
+.download-card:hover { background: var(--primary-lt); box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+.download-card-type {
+  font-family: var(--mono); font-size: 0.65rem;
+  color: var(--primary); letter-spacing: 0.15em; text-transform: uppercase;
+}
+.download-card h4 { font-size: 1rem; margin: 0; }
+.download-card p { font-size: 0.82rem; color: var(--gray-dk); margin: 0; }
+
+/* ── FAQ ── */
+.faq-wrap { margin-top: 2rem; }
+.accordion-item { border: 0; border-bottom: 1px solid var(--border); }
+.accordion-button {
+  font-size: 0.95rem; font-weight: 500;
+  color: var(--ink); background: transparent;
+  padding: 1.1rem 0; box-shadow: none !important;
+}
+.accordion-button:not(.collapsed) { color: var(--primary); background: transparent; }
+.accordion-button::after {
+  filter: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FF534A'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+.accordion-body { padding: 0 0 1.2rem 0; font-size: 0.9rem; color: var(--gray-dk); line-height: 1.8; }
+
+/* ── CONTACT FORM ── */
+.form-control {
+  border-radius: 0; border: 1px solid var(--border);
+  font-size: 0.88rem; padding: 0.75rem 1rem;
+  transition: border-color .2s;
+}
+.form-control:focus { border-color: var(--primary); box-shadow: none; }
+
+.form-label {
+  font-size: 0.72rem; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--gray-dk);
+  margin-bottom: 0.4rem; font-weight: 500;
+}
+
+.btn-submit {
+  background: var(--ink); color: var(--white);
+  padding: 0.85rem 2.5rem; font-size: 0.85rem;
+  font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; border: none; cursor: pointer;
+  width: 100%; display: flex;
+  justify-content: space-between; align-items: center;
+  transition: background .2s;
+}
+.btn-submit:hover { background: var(--primary); }
+
+/* ── TESTIMONIALS ── */
+#testimonials { padding: 4rem 0; background: var(--light); }
+
+.testimonial-card {
+  background: var(--white); padding: 2rem;
+  border-top: 3px solid var(--primary);
+  height: 100%;
+}
+.testimonial-quote-mark {
+  font-size: 3rem; line-height: 0.5;
+  color: var(--primary); opacity: 0.2;
+  font-family: Georgia, serif; margin-bottom: 1rem;
+  display: block;
+}
+.testimonial-text {
+  font-size: 0.92rem; line-height: 1.8;
+  color: var(--gray-dk); font-style: italic;
+  margin-bottom: 1.2rem;
+}
+.testimonial-author-name { font-weight: 700; font-size: 0.88rem; }
+.testimonial-author-role { font-size: 0.75rem; color: var(--gray); }
+.stars { color: var(--primary); font-size: 0.75rem; margin-bottom: 0.4rem; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink); color: rgba(255,255,255,0.45);
+  padding: 2rem 3rem;
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: gap; gap: 1rem;
+}
+footer a { color: rgba(255,255,255,0.45); font-size: 0.8rem; }
+footer a:hover { color: var(--primary); }
+.footer-copy { font-size: 0.78rem; }
+.footer-links { display: flex; gap: 1.5rem; }
+
+/* ── REVEAL ANIMATIONS ── */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 991px) {
+  .menu-btn { display: block; }
+  header {
+    transform: translate3d(-100%, 0, 0);
+    transition: transform .3s ease;
+  }
+  .nav-active header { transform: translate3d(0,0,0); }
+  main { margin-left: 0; }
+  .content-wrap { padding: 0 1.5rem; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .bg-text::after { font-size: 5rem; opacity: 0.025; }
+}
+@media (max-width: 600px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 1.5rem; }
+}
+</style>
 </head>
 
-<body class="bg-body homepage post-template" data-bs-spy="scroll" data-bs-target="#header-nav" tabindex="0">
-  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-    <defs>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="instagram" viewBox="0 0 15 15">
-        <path fill="none" stroke="currentColor"
-          d="M11 3.5h1M4.5.5h6a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4h-6a4 4 0 0 1-4-4v-6a4 4 0 0 1 4-4Zm3 10a3 3 0 1 1 0-6a3 3 0 0 1 0 6Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="facebook" viewBox="0 0 15 15">
-        <path fill="none" stroke="currentColor"
-          d="M7.5 14.5a7 7 0 1 1 0-14a7 7 0 0 1 0 14Zm0 0v-8a2 2 0 0 1 2-2h.5m-5 4h5" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="twitter" viewBox="0 0 15 15">
-        <path fill="currentColor"
-          d="m14.478 1.5l.5-.033a.5.5 0 0 0-.871-.301l.371.334Zm-.498 2.959a.5.5 0 1 0-1 0h1Zm-6.49.082h-.5h.5Zm0 .959h.5h-.5Zm-6.99 7V12a.5.5 0 0 0-.278.916L.5 12.5Zm.998-11l.469-.175a.5.5 0 0 0-.916-.048l.447.223Zm3.994 9l.354.353a.5.5 0 0 0-.195-.827l-.159.474Zm7.224-8.027l-.37.336l.18.199l.265-.04l-.075-.495Zm1.264-.94c.051.778.003 1.25-.123 1.606c-.122.345-.336.629-.723 1l.692.722c.438-.42.776-.832.974-1.388c.193-.546.232-1.178.177-2.006l-.998.066Zm0 3.654V4.46h-1v.728h1Zm-6.99-.646V5.5h1v-.959h-1Zm0 .959V6h1v-.5h-1ZM10.525 1a3.539 3.539 0 0 0-3.537 3.541h1A2.539 2.539 0 0 1 10.526 2V1Zm2.454 4.187C12.98 9.503 9.487 13 5.18 13v1c4.86 0 8.8-3.946 8.8-8.813h-1ZM1.03 1.675C1.574 3.127 3.614 6 7.49 6V5C4.174 5 2.421 2.54 1.966 1.325l-.937.35Zm.021-.398C.004 3.373-.157 5.407.604 7.139c.759 1.727 2.392 3.055 4.73 3.835l.317-.948c-2.155-.72-3.518-1.892-4.132-3.29c-.612-1.393-.523-3.11.427-5.013l-.895-.446Zm4.087 8.87C4.536 10.75 2.726 12 .5 12v1c2.566 0 4.617-1.416 5.346-2.147l-.708-.706Zm7.949-8.009A3.445 3.445 0 0 0 10.526 1v1c.721 0 1.37.311 1.82.809l.74-.671Zm-.296.83a3.513 3.513 0 0 0 2.06-1.134l-.744-.668a2.514 2.514 0 0 1-1.466.813l.15.989ZM.222 12.916C1.863 14.01 3.583 14 5.18 14v-1c-1.63 0-3.048-.011-4.402-.916l-.556.832Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="pinterest" viewBox="0 0 15 15">
-        <path fill="none" stroke="currentColor"
-          d="m4.5 13.5l3-7m-3.236 3a2.989 2.989 0 0 1-.764-2V7A3.5 3.5 0 0 1 7 3.5h1A3.5 3.5 0 0 1 11.5 7v.5a3 3 0 0 1-3 3a2.081 2.081 0 0 1-1.974-1.423L6.5 9m1 5.5a7 7 0 1 1 0-14a7 7 0 0 1 0 14Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="youtube" viewBox="0 0 15 15">
-        <path fill="currentColor"
-          d="m1.61 12.738l-.104.489l.105-.489Zm11.78 0l.104.489l-.105-.489Zm0-10.476l.104-.489l-.105.489Zm-11.78 0l.106.489l-.105-.489ZM6.5 5.5l.277-.416A.5.5 0 0 0 6 5.5h.5Zm0 4H6a.5.5 0 0 0 .777.416L6.5 9.5Zm3-2l.277.416a.5.5 0 0 0 0-.832L9.5 7.5ZM0 3.636v7.728h1V3.636H0Zm15 7.728V3.636h-1v7.728h1ZM1.506 13.227c3.951.847 8.037.847 11.988 0l-.21-.978a27.605 27.605 0 0 1-11.568 0l-.21.978ZM13.494 1.773a28.606 28.606 0 0 0-11.988 0l.21.978a27.607 27.607 0 0 1 11.568 0l.21-.978ZM15 3.636c0-.898-.628-1.675-1.506-1.863l-.21.978c.418.09.716.458.716.885h1Zm-1 7.728a.905.905 0 0 1-.716.885l.21.978A1.905 1.905 0 0 0 15 11.364h-1Zm-14 0c0 .898.628 1.675 1.506 1.863l.21-.978A.905.905 0 0 1 1 11.364H0Zm1-7.728c0-.427.298-.796.716-.885l-.21-.978A1.905 1.905 0 0 0 0 3.636h1ZM6 5.5v4h1v-4H6Zm.777 4.416l3-2l-.554-.832l-3 2l.554.832Zm3-2.832l-3-2l-.554.832l3 2l.554-.832Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="dribble" viewBox="0 0 15 15">
-        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-          d="M4.839 1.024c3.346 4.041 5.096 7.922 5.704 12.782M.533 6.82c5.985-.138 9.402-1.083 11.97-4.216M2.7 12.594c3.221-4.902 7.171-5.65 11.755-4.293M14.5 7.5a7 7 0 1 0-14 0a7 7 0 0 0 14 0Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="calendar" viewBox="0 0 24 24">
-        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-          <rect width="20" height="18" x="2" y="4" rx="4" />
-          <path d="M8 2v4m8-4v4M2 10h20" />
-        </g>
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="shopping-bag" viewBox="0 0 24 24">
-        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-          <path
-            d="M3.977 9.84A2 2 0 0 1 5.971 8h12.058a2 2 0 0 1 1.994 1.84l.803 10A2 2 0 0 1 18.833 22H5.167a2 2 0 0 1-1.993-2.16l.803-10Z" />
-          <path d="M16 11V6a4 4 0 0 0-4-4v0a4 4 0 0 0-4 4v5" />
-        </g>
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="gift" viewBox="0 0 24 24">
-        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-          <rect width="18" height="14" x="3" y="8" rx="2" />
-          <path d="M12 5a3 3 0 1 0-3 3m6 0a3 3 0 1 0-3-3m0 0v17m9-7H3" />
-        </g>
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="arrow-cycle" viewBox="0 0 24 24">
-        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-          <path
-            d="M22 12c0 6-4.39 10-9.806 10C7.792 22 4.24 19.665 3 16m-1-4C2 6 6.39 2 11.806 2C16.209 2 19.76 4.335 21 8" />
-          <path d="m7 17l-4-1l-1 4M17 7l4 1l1-4" />
-        </g>
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="link" viewBox="0 0 24 24">
-        <path fill="currentColor"
-          d="M12 19a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm5 0a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm0-4a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm-5 0a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm7-12h-1V2a1 1 0 0 0-2 0v1H8V2a1 1 0 0 0-2 0v1H5a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3Zm1 17a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9h16Zm0-11H4V6a1 1 0 0 1 1-1h1v1a1 1 0 0 0 2 0V5h8v1a1 1 0 0 0 2 0V5h1a1 1 0 0 1 1 1ZM7 15a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm0 4a1 1 0 1 0-1-1a1 1 0 0 0 1 1Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="arrow-left" viewBox="0 0 24 24">
-        <path fill="currentColor"
-          d="M17 11H9.41l3.3-3.29a1 1 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33a1 1 0 0 0 0 .76a1 1 0 0 0 .21.33l5 5a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.42L9.41 13H17a1 1 0 0 0 0-2Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="arrow-right" viewBox="0 0 24 24">
-        <path fill="currentColor"
-          d="M17.92 11.62a1 1 0 0 0-.21-.33l-5-5a1 1 0 0 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0l5-5a1 1 0 0 0 .21-.33a1 1 0 0 0 0-.76Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="play" viewBox="0 0 24 24">
-        <g fill="none" fill-rule="evenodd">
-          <path
-            d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z" />
-          <path fill="currentColor"
-            d="M5.669 4.76a1.469 1.469 0 0 1 2.04-1.177c1.062.454 3.442 1.533 6.462 3.276c3.021 1.744 5.146 3.267 6.069 3.958c.788.591.79 1.763.001 2.356c-.914.687-3.013 2.19-6.07 3.956c-3.06 1.766-5.412 2.832-6.464 3.28c-.906.387-1.92-.2-2.038-1.177c-.138-1.142-.396-3.735-.396-7.237c0-3.5.257-6.092.396-7.235Z" />
-        </g>
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="category" viewBox="0 0 24 24">
-        <path fill="currentColor"
-          d="M19 5.5h-6.28l-.32-1a3 3 0 0 0-2.84-2H5a3 3 0 0 0-3 3v13a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-10a3 3 0 0 0-3-3Zm1 13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-13a1 1 0 0 1 1-1h4.56a1 1 0 0 1 .95.68l.54 1.64a1 1 0 0 0 .95.68h7a1 1 0 0 1 1 1Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="calendar" viewBox="0 0 24 24">
-        <path fill="currentColor"
-          d="M19 4h-2V3a1 1 0 0 0-2 0v1H9V3a1 1 0 0 0-2 0v1H5a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm1 15a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-7h16Zm0-9H4V7a1 1 0 0 1 1-1h2v1a1 1 0 0 0 2 0V6h6v1a1 1 0 0 0 2 0V6h2a1 1 0 0 1 1 1Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="heart" viewBox="0 0 24 24">
-        <path fill="currentColor"
-          d="M20.16 4.61A6.27 6.27 0 0 0 12 4a6.27 6.27 0 0 0-8.16 9.48l7.45 7.45a1 1 0 0 0 1.42 0l7.45-7.45a6.27 6.27 0 0 0 0-8.87Zm-1.41 7.46L12 18.81l-6.75-6.74a4.28 4.28 0 0 1 3-7.3a4.25 4.25 0 0 1 3 1.25a1 1 0 0 0 1.42 0a4.27 4.27 0 0 1 6 6.05Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="plus" viewBox="0 0 24 24">
-        <path fill="currentColor"
-          d="M19 11h-6V5a1 1 0 0 0-2 0v6H5a1 1 0 0 0 0 2h6v6a1 1 0 0 0 2 0v-6h6a1 1 0 0 0 0-2Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="minus" viewBox="0 0 24 24">
-        <path fill="currentColor" d="M19 11H5a1 1 0 0 0 0 2h14a1 1 0 0 0 0-2Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="cart" viewBox="0 0 24 24">
-        <path fill="currentColor"
-          d="M8.5 19a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 8.5 19ZM19 16H7a1 1 0 0 1 0-2h8.491a3.013 3.013 0 0 0 2.885-2.176l1.585-5.55A1 1 0 0 0 19 5H6.74a3.007 3.007 0 0 0-2.82-2H3a1 1 0 0 0 0 2h.921a1.005 1.005 0 0 1 .962.725l.155.545v.005l1.641 5.742A3 3 0 0 0 7 18h12a1 1 0 0 0 0-2Zm-1.326-9l-1.22 4.274a1.005 1.005 0 0 1-.963.726H8.754l-.255-.892L7.326 7ZM16.5 19a1.5 1.5 0 1 0 1.5 1.5a1.5 1.5 0 0 0-1.5-1.5Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="check" viewBox="0 0 24 24">
-        <path fill="currentColor"
-          d="M18.71 7.21a1 1 0 0 0-1.42 0l-7.45 7.46l-3.13-3.14A1 1 0 1 0 5.29 13l3.84 3.84a1 1 0 0 0 1.42 0l8.16-8.16a1 1 0 0 0 0-1.47Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="trash" viewBox="0 0 24 24">
-        <path fill="currentColor"
-          d="M10 18a1 1 0 0 0 1-1v-6a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1ZM20 6h-4V5a3 3 0 0 0-3-3h-2a3 3 0 0 0-3 3v1H4a1 1 0 0 0 0 2h1v11a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8h1a1 1 0 0 0 0-2ZM10 5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1h-4Zm7 14a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8h10Zm-3-1a1 1 0 0 0 1-1v-6a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="star-outline" viewBox="0 0 15 15">
-        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-          d="M7.5 9.804L5.337 11l.413-2.533L4 6.674l2.418-.37L7.5 4l1.082 2.304l2.418.37l-1.75 1.793L9.663 11L7.5 9.804Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="star-solid" viewBox="0 0 15 15">
-        <path fill="currentColor"
-          d="M7.953 3.788a.5.5 0 0 0-.906 0L6.08 5.85l-2.154.33a.5.5 0 0 0-.283.843l1.574 1.613l-.373 2.284a.5.5 0 0 0 .736.518l1.92-1.063l1.921 1.063a.5.5 0 0 0 .736-.519l-.373-2.283l1.574-1.613a.5.5 0 0 0-.283-.844L8.921 5.85l-.968-2.062Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="search" viewBox="0 0 24 24">
-        <path fill="currentColor"
-          d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="user" viewBox="0 0 24 24">
-        <path fill="currentColor"
-          d="M15.71 12.71a6 6 0 1 0-7.42 0a10 10 0 0 0-6.22 8.18a1 1 0 0 0 2 .22a8 8 0 0 1 15.9 0a1 1 0 0 0 1 .89h.11a1 1 0 0 0 .88-1.1a10 10 0 0 0-6.25-8.19ZM12 12a4 4 0 1 1 4-4a4 4 0 0 1-4 4Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="close" viewBox="0 0 15 15">
-        <path fill="currentColor"
-          d="M7.953 3.788a.5.5 0 0 0-.906 0L6.08 5.85l-2.154.33a.5.5 0 0 0-.283.843l1.574 1.613l-.373 2.284a.5.5 0 0 0 .736.518l1.92-1.063l1.921 1.063a.5.5 0 0 0 .736-.519l-.373-2.283l1.574-1.613a.5.5 0 0 0-.283-.844L8.921 5.85l-.968-2.062Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="quote" viewBox="0 0 448 512">
-        <path fill="currentColor"
-          d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64h-64c-35.3 0-64-28.7-64-64V216z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="folder" viewBox="0 0 18 18" fill="none">
-        <path
-          d="M14.0946 4.04689H9.56953L9.33895 3.3259C9.18947 2.90285 8.9122 2.53678 8.54555 2.27842C8.1789 2.02006 7.74102 1.8822 7.29258 1.88393H4.00687C3.43356 1.88393 2.88374 2.11181 2.47835 2.51744C2.07296 2.92308 1.84521 3.47324 1.84521 4.04689V13.4197C1.84521 13.9934 2.07296 14.5435 2.47835 14.9492C2.88374 15.3548 3.43356 15.5827 4.00687 15.5827H14.0946C14.6679 15.5827 15.2177 15.3548 15.6231 14.9492C16.0285 14.5435 16.2562 13.9934 16.2562 13.4197V6.20985C16.2562 5.6362 16.0285 5.08604 15.6231 4.68041C15.2177 4.27477 14.6679 4.04689 14.0946 4.04689ZM14.8151 13.4197C14.8151 13.6109 14.7392 13.7943 14.6041 13.9295C14.469 14.0648 14.2857 14.1407 14.0946 14.1407H4.00687C3.81577 14.1407 3.63249 14.0648 3.49736 13.9295C3.36223 13.7943 3.28632 13.6109 3.28632 13.4197V4.04689C3.28632 3.85567 3.36223 3.67229 3.49736 3.53707C3.63249 3.40186 3.81577 3.3259 4.00687 3.3259H7.29258C7.44364 3.32551 7.591 3.37264 7.71384 3.46061C7.83667 3.54859 7.92877 3.67297 7.97711 3.81617L8.3662 4.99859C8.41454 5.1418 8.50664 5.26618 8.62947 5.35415C8.75231 5.44213 8.89967 5.48925 9.05073 5.48886H14.0946C14.2857 5.48886 14.469 5.56483 14.6041 5.70004C14.7392 5.83525 14.8151 6.01863 14.8151 6.20985V13.4197Z"
-          fill="black" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="clock" viewBox="0 0 18 18" fill="none">
-        <path
-          d="M11.0931 9.19042L9.58134 8.3173V5.12838C9.58134 4.93716 9.50543 4.75377 9.3703 4.61856C9.23517 4.48335 9.05189 4.40739 8.86079 4.40739C8.66969 4.40739 8.48641 4.48335 8.35128 4.61856C8.21615 4.75377 8.14024 4.93716 8.14024 5.12838V8.73331C8.14024 8.85987 8.17354 8.9842 8.23678 9.0938C8.30002 9.2034 8.39098 9.29441 8.50051 9.35769L10.3725 10.4392C10.4545 10.4873 10.5452 10.5186 10.6393 10.5315C10.7335 10.5444 10.8292 10.5385 10.9211 10.5142C11.013 10.4899 11.0991 10.4477 11.1746 10.3899C11.2501 10.3322 11.3134 10.26 11.3609 10.1777C11.4084 10.0953 11.4392 10.0044 11.4515 9.91012C11.4637 9.81583 11.4572 9.72004 11.4323 9.62828C11.4074 9.53652 11.3646 9.45059 11.3064 9.37544C11.2482 9.3003 11.1757 9.23741 11.0931 9.19042ZM8.86079 1.52344C7.43567 1.52344 6.04256 1.94629 4.85762 2.73852C3.67268 3.53075 2.74913 4.65678 2.20376 5.97421C1.6584 7.29165 1.5157 8.74131 1.79373 10.1399C2.07175 11.5385 2.75801 12.8231 3.76572 13.8315C4.77343 14.8398 6.05733 15.5265 7.45506 15.8047C8.8528 16.0828 10.3016 15.9401 11.6182 15.3944C12.9349 14.8487 14.0602 13.9246 14.852 12.7389C15.6437 11.5532 16.0663 10.1593 16.0663 8.73331C16.0642 6.82178 15.3044 4.98914 13.9535 3.63748C12.6027 2.28582 10.7712 1.52554 8.86079 1.52344ZM8.86079 14.5012C7.7207 14.5012 6.60621 14.1629 5.65826 13.5291C4.7103 12.8954 3.97146 11.9945 3.53517 10.9406C3.09887 9.88665 2.98472 8.72691 3.20714 7.60805C3.42956 6.48919 3.97857 5.46145 4.78474 4.65479C5.5909 3.84814 6.61802 3.2988 7.73621 3.07624C8.8544 2.85369 10.0134 2.96791 11.0667 3.40447C12.12 3.84103 13.0203 4.58031 13.6537 5.52884C14.2871 6.47737 14.6252 7.59253 14.6252 8.73331C14.6233 10.2625 14.0154 11.7284 12.9347 12.8097C11.8541 13.891 10.389 14.4993 8.86079 14.5012Z"
-          fill="black" />
-      </symbol>
-    </defs>
-  </svg>
-
-  <a class="menu-btn"><span></span></a>
-
-  <div class="container-fluid overflow-hidden">
-
-    <header id="header-nav" class="col-lg-2 position-fixed px-5 bg-white h-100">
-      <div class="header-wrap d-flex flex-column justify-content-between h-100">
-        <div class="navigation">
-          <div class="site-logo mt-5">
-            <a href="index.html">
-              <img src="images/main-logo.png" alt="logo" class="img-fluid">
-            </a>
-          </div>
- <div class="mt-5">
-          <div class="email-links">
-            <a href="mailto:contact@putriyuniutami.com" class="py-3 my-3 border-bottom d-flex">contact@putriyuniutami.com</a>
-          </div>
-          <ul class="list-unstyled d-flex justify-content-start flex-wrap gap-3">
-            <li>
-              <a href="https://www.facebook.com/putriyuniutami.site/" class="text-dark">
-                <svg width="24" height="24" viewBox="0 0 24 24">
-                  <use xlink:href="#facebook"></use>
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a href="https://twitter.com/putriyuniutami_" class="text-dark">
-                <svg width="24" height="24" viewBox="0 0 24 24">
-                  <use xlink:href="#twitter"></use>
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/putri-yuni-utami/" class="text-dark">
-                <svg width="24" height="24" viewBox="0 0 24 24">
-                 <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-  <path fill-rule="evenodd" d="M12.51 8.796v1.697a3.738 3.738 0 0 1 3.288-1.684c3.455 0 4.202 2.16 4.202 4.97V19.5h-3.2v-5.072c0-1.21-.244-2.766-2.128-2.766-1.827 0-2.139 1.317-2.139 2.676V19.5h-3.19V8.796h3.168ZM7.2 6.106a1.61 1.61 0 0 1-.988 1.483 1.595 1.595 0 0 1-1.743-.348A1.607 1.607 0 0 1 5.6 4.5a1.601 1.601 0 0 1 1.6 1.606Z" clip-rule="evenodd"/>
-  <path d="M7.2 8.809H4V19.5h3.2V8.809Z"/>
+<!-- SVG SPRITE (kept from original) -->
+<body data-bs-spy="scroll" data-bs-target="#one-page-menu">
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+  <defs>
+    <symbol id="instagram" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="M11 3.5h1M4.5.5h6a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4h-6a4 4 0 0 1-4-4v-6a4 4 0 0 1 4-4Zm3 10a3 3 0 1 1 0-6a3 3 0 0 1 0 6Z"/></symbol>
+    <symbol id="facebook" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="M7.5 14.5a7 7 0 1 1 0-14a7 7 0 0 1 0 14Zm0 0v-8a2 2 0 0 1 2-2h.5m-5 4h5"/></symbol>
+    <symbol id="twitter" viewBox="0 0 15 15"><path fill="currentColor" d="m14.478 1.5l.5-.033a.5.5 0 0 0-.871-.301l.371.334Zm-.498 2.959a.5.5 0 1 0-1 0h1Zm-6.49.082h-.5h.5Zm0 .959h.5h-.5Zm-6.99 7V12a.5.5 0 0 0-.278.916L.5 12.5Zm.998-11l.469-.175a.5.5 0 0 0-.916-.048l.447.223Zm3.994 9l.354.353a.5.5 0 0 0-.195-.827l-.159.474Zm7.224-8.027l-.37.336l.18.199l.265-.04l-.075-.495Zm1.264-.94c.051.778.003 1.25-.123 1.606c-.122.345-.336.629-.723 1l.692.722c.438-.42.776-.832.974-1.388c.193-.546.232-1.178.177-2.006l-.998.066Zm0 3.654V4.46h-1v.728h1Zm-6.99-.646V5.5h1v-.959h-1Zm0 .959V6h1v-.5h-1ZM10.525 1a3.539 3.539 0 0 0-3.537 3.541h1A2.539 2.539 0 0 1 10.526 2V1Zm2.454 4.187C12.98 9.503 9.487 13 5.18 13v1c4.86 0 8.8-3.946 8.8-8.813h-1ZM1.03 1.675C1.574 3.127 3.614 6 7.49 6V5C4.174 5 2.421 2.54 1.966 1.325l-.937.35Zm.021-.398C.004 3.373-.157 5.407.604 7.139c.759 1.727 2.392 3.055 4.73 3.835l.317-.948c-2.155-.72-3.518-1.892-4.132-3.29c-.612-1.393-.523-3.11.427-5.013l-.895-.446Zm4.087 8.87C4.536 10.75 2.726 12 .5 12v1c2.566 0 4.617-1.416 5.346-2.147l-.708-.706Zm7.949-8.009A3.445 3.445 0 0 0 10.526 1v1c.721 0 1.37.311 1.82.809l.74-.671Zm-.296.83a3.513 3.513 0 0 0 2.06-1.134l-.744-.668a2.514 2.514 0 0 1-1.466.813l.15.989ZM.222 12.916C1.863 14.01 3.583 14 5.18 14v-1c-1.63 0-3.048-.011-4.402-.916l-.556.832Z"/></symbol>
+    <symbol id="linkedin-icon" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12.51 8.796v1.697a3.738 3.738 0 0 1 3.288-1.684c3.455 0 4.202 2.16 4.202 4.97V19.5h-3.2v-5.072c0-1.21-.244-2.766-2.128-2.766-1.827 0-2.139 1.317-2.139 2.676V19.5h-3.19V8.796h3.168ZM7.2 6.106a1.61 1.61 0 0 1-.988 1.483a1.595 1.595 0 0 1-1.743-.348A1.607 1.607 0 0 1 5.6 4.5a1.601 1.601 0 0 1 1.6 1.606Z" clip-rule="evenodd"/><path fill="currentColor" d="M7.2 8.809H4V19.5h3.2V8.809Z"/></symbol>
+    <symbol id="substack-icon" viewBox="0 0 16 16"><path fill="currentColor" d="M15 3.604H1v1.891h14v-1.89ZM1 7.208V16l7-3.926L15 16V7.208zM15 0H1v1.89h14z"/></symbol>
+    <symbol id="wordpress-icon" viewBox="0 0 16 16"><path fill="currentColor" d="M12.633 7.653c0-.848-.305-1.435-.566-1.892l-.08-.13c-.317-.51-.594-.958-.594-1.48 0-.63.478-1.218 1.152-1.218q.03 0 .058.003l.031.003A6.84 6.84 0 0 0 8 1.137 6.86 6.86 0 0 0 2.266 4.23c.16.005.313.009.442.009.717 0 1.828-.087 1.828-.087.37-.022.414.521.044.565 0 0-.371.044-.785.065l2.5 7.434 1.5-4.506-1.07-2.929c-.369-.022-.719-.065-.719-.065-.37-.022-.326-.588.043-.566 0 0 1.134.087 1.808.087.718 0 1.83-.087 1.83-.087.37-.022.413.522.043.566 0 0-.372.043-.785.065l2.48 7.377.684-2.287.054-.173c.27-.86.469-1.495.469-2.046zM1.137 8a6.86 6.86 0 0 0 3.868 6.176L1.73 5.206A6.8 6.8 0 0 0 1.137 8"/><path fill="currentColor" d="M6.061 14.583 8.121 8.6l2.109 5.78q.02.05.049.094a6.85 6.85 0 0 1-4.218.109m7.96-9.876q.046.328.047.706c0 .696-.13 1.479-.522 2.458l-2.096 6.06a6.86 6.86 0 0 0 2.572-9.224z"/></symbol>
+  </defs>
 </svg>
-   </a>
-            </li>
-            <li>
- <a href="https://putriyuniutami.substack.com/" class="text-dark">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-substack" viewBox="0 0 16 16">
-  <path d="M15 3.604H1v1.891h14v-1.89ZM1 7.208V16l7-3.926L15 16V7.208zM15 0H1v1.89h14z"/>
-</svg>
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a href="https://putriyuniutami.wordpress.com/" class="text-dark">
-                <svg width="24" height="24" viewBox="0 0 24 24">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-wordpress" viewBox="0 0 16 16">
-  <path d="M12.633 7.653c0-.848-.305-1.435-.566-1.892l-.08-.13c-.317-.51-.594-.958-.594-1.48 0-.63.478-1.218 1.152-1.218q.03 0 .058.003l.031.003A6.84 6.84 0 0 0 8 1.137 6.86 6.86 0 0 0 2.266 4.23c.16.005.313.009.442.009.717 0 1.828-.087 1.828-.087.37-.022.414.521.044.565 0 0-.371.044-.785.065l2.5 7.434 1.5-4.506-1.07-2.929c-.369-.022-.719-.065-.719-.065-.37-.022-.326-.588.043-.566 0 0 1.134.087 1.808.087.718 0 1.83-.087 1.83-.087.37-.022.413.522.043.566 0 0-.372.043-.785.065l2.48 7.377.684-2.287.054-.173c.27-.86.469-1.495.469-2.046zM1.137 8a6.86 6.86 0 0 0 3.868 6.176L1.73 5.206A6.8 6.8 0 0 0 1.137 8"/>
-  <path d="M6.061 14.583 8.121 8.6l2.109 5.78q.02.05.049.094a6.85 6.85 0 0 1-4.218.109m7.96-9.876q.046.328.047.706c0 .696-.13 1.479-.522 2.458l-2.096 6.06a6.86 6.86 0 0 0 2.572-9.224z"/>
-  <path fill-rule="evenodd" d="M0 8c0-4.411 3.589-8 8-8s8 3.589 8 8-3.59 8-8 8-8-3.589-8-8m.367 0c0 4.209 3.424 7.633 7.633 7.633S15.632 12.209 15.632 8C15.632 3.79 12.208.367 8 .367 3.79.367.367 3.79.367 8"/>
 
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a href="https://instagram.com/putriyuniutami_" class="text-dark">
-                <svg width="24" height="24" viewBox="0 0 24 24">
-                  <use xlink:href="#instagram"></use>
-                </svg>
-              </a>
-            </li>
-          </ul>
-          <nav id="one-page-menu" class="vertical-menu my-5">
-            <ul class="menu-list list-unstyled">
-              <li><a href="#home" class="nav-link">Home</a></li>
-              <li><a href="#about" class="nav-link">Education and Experience</a></li>
-              <li><a href="#experience" class="nav-link">About Me</a></li>
-              <li><a href="#resumeandcv" class="nav-link">Resume and CV</a></li>
-              <li><a href="/portfolio.html" class="nav-link">My Writing portfolio</a></li>
-            </ul>
-          </nav>
-        </div>
-        </div>
-      </div>
-    </header>
+<!-- MOBILE MENU BUTTON -->
+<a class="menu-btn" id="menuBtn"><span></span></a>
 
-    <main class="col-lg-10 offset-lg-2">
-      <div class="container">
+<!-- ══ SIDEBAR ══════════════════════════════════════════════════════ -->
+<header id="sidebar">
+  <div>
+    <div class="site-logo mb-4">
+      <!-- Replace src with your actual logo path -->
+       <img src="/images/main-logo.png" alt="logo" class="img-fluid">
+      <div class="site-logo-sub">Language Specialist</div>
+    </div>
 
-        <!-- content wrapper -->
-        <div class="justify-content-center px-1 mx-1 px-xl-5 mx-xl-5">
+    <a href="mailto:contact@putriyuniutami.com" class="sidebar-email">
+      contact@putriyuniutami.com
+    </a>
 
-          <section id="home" class="py-5 bg-text" data-text="01">
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="banner-image text-center" data-aos="fade-right">
-                  <img src="images/banner-image.png" alt="banner" class="img-fluid" class="img-fluid">
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="banner-content my-1 pt-1 my-lg-5 pt-lg-5" data-aos="fade-in">
-                  <span class="text-muted text-uppercase">Linguist | Technical Editor | Translator | Content Writer</span>
-                  <h1 class="banner-title display-xl lh-1 txt-fx slide-up">Putri Yuni Utami</h1>
-                </div>
-              </div>
-            </div>
+    <div class="sidebar-socials">
+      <a href="https://www.facebook.com/putriyuniutami.site/" title="Facebook">
+        <svg width="20" height="20" viewBox="0 0 15 15"><use xlink:href="#facebook"/></svg>
+      </a>
+      <a href="https://twitter.com/putriyuniutami_" title="Twitter / X">
+        <svg width="20" height="20" viewBox="0 0 15 15"><use xlink:href="#twitter"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/putri-yuni-utami/" title="LinkedIn">
+        <svg width="20" height="20" viewBox="0 0 24 24"><use xlink:href="#linkedin-icon"/></svg>
+      </a>
+      <a href="https://putriyuniutami.substack.com/" title="Substack">
+        <svg width="20" height="20" viewBox="0 0 16 16"><use xlink:href="#substack-icon"/></svg>
+      </a>
+      <a href="https://putriyuniutami.wordpress.com/" title="WordPress">
+        <svg width="20" height="20" viewBox="0 0 16 16"><use xlink:href="#wordpress-icon"/></svg>
+      </a>
+      <a href="https://instagram.com/putriyuniutami_" title="Instagram">
+        <svg width="20" height="20" viewBox="0 0 15 15"><use xlink:href="#instagram"/></svg>
+      </a>
+    </div>
 
-            <div class="row">
-              <div class="col-lg-3">
-                <div class="icon-box" data-aos="fade-up">
-                  <span>01</span>
-                  <h3 class="sub-heading">QA Specialist</h3>
-                  <p>A Quality Assurance (QA) Specialist is a professional responsible for ensuring that a product, service, or process meets specific quality standards and requirements before it reaches the end user or is finalized for publication.</p>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                  <span>02</span>
-                  <h3 class="sub-heading">Technical Editor</h3>
-                  <p>A Technical Editor is a professional responsible for reviewing, refining, and polishing technical documentation to ensure it is accurate, clear, and usable for its intended audience.</p>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-                  <span>03</span>
-                  <h3 class="sub-heading">Translator</h3>
-                  <p>An Indonesian-to-English translator is a language professional who converts written text from Indonesian (Bahasa Indonesia) into English while preserving the original meaning, tone, and intent.</p>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <a href="/portfolio.html" class="btn btn-dark text-uppercase py-4 px-5" data-aos="fade-up" data-aos-delay="300">View my Writing Portfolio</a>
-              </div>
-            </div>
-          </section>
-
-          <section id="about" class="my-5 py-5 bg-text" data-text="02">
-            <div class="row d-flex flex-wrap" data-aos="fade-up">
-              <div class="col-lg-6 pb-5">
-                <span class="text-muted text-uppercase">BIODATA</span>
-                <h2 class="display-4 txt-fx slide-up">Education</h2>
-                <div class="data-info py-3" data-aos="fade-up">
-                  <span class="meta-date">August 2015 - July 2019</span>
-                  <h3 class="info-title">Masters of Art in Linguistics (Translation)</h3>
-                  <p>Universitas Sebelas Maret</p>
-                    <p>During my graduate studies, I bridged the gap between linguistic theory and practical application. I developed a sophisticated command of research methodology that focused on the strategic design and planning required for applied linguistic inquiry. 
-                      <p> My work centered on the nuanced transition of meaning across languages. This period was instrumental in refining my ability to handle complex projects with a high degree of analytical rigor.</p>
-                </div>
-                <div class="data-info" data-aos="fade-up" data-aos-delay="100">
-                  <span class="meta-date">August 2009 - June 2014</span>
-                  <h3 class="info-title">Bachelor of English Language Education</h3>
-                  <p>Universitas Ahmad Dahlan </p>
-                  <p>My academic career began with a focus on pedagogy and linguistic analysis. I developed a robust toolkit for deconstructing diverse spoken and written English texts, which I later translated into effective classroom strategies. 
-                    <p> By integrating applied linguistics with English language teaching (ELT), I gained hands-on experience in designing and executing lesson plans that prioritized both sound pedagogical principles and student engagement.</p>
-                </div>
-              </div>
-              <div class="col-lg-6 pb-5">
-                <h2 class="display-4 txt-fx slide-up">Current Experiences</h2>
-                <div class="data-info py-3" data-aos="fade-up" data-aos-delay="200">
-                  <span class="meta-date">August 2024 – April 2026</span>
-                  <h3 class="info-title">Life Management Science Labs: QA Specialist</h3>
-                  <p>I manage the end-to-end review and production of four Research Vaults monthly, consolidating complex research data into centralized, publication-ready repositories. I evaluate and approve four Compendiums and ten Protocols each month, ensuring 100% compliance with technical specifications and ethical guidelines. My role involves auditing 5–10 standard documents monthly to maintain a 98% proofreading accuracy rate, meticulously correcting grammatical and formatting errors in technical texts.
-                   <p>I also validate 5–7 documents per month for academic adherence and relevance. I collaborate closely with Technical Editors to implement 75% of suggested process improvements quarterly, successfully streamlining the publication workflow. To ensure operational transparency, I maintain 100% accurate records of all assessments and approval statuses in Asana. My work ensures that all materials meet rigorous quality standards, transforming raw research into polished, authoritative academic documentation.</p>
-                </div>
-                <div class="data-info" data-aos="fade-up" data-aos-delay="300">
-                  <span class="meta-date">August 2023 – July 2024</span>
-                  <h3 class="info-title">Life Management Science Labs: Technical Editor</h3>
-                  <p>I interpret complex research handover documents to author high-quality standard documents, producing four major technical publications monthly for specific audiences. I partner with Junior and Senior Researchers to ensure 100% accuracy in content, style, and technical specifications for all documentation. My role involves performing rigorous reviews and corrections, focusing on clarity, grammar, and structural flow to meet strict institutional standards.
-                    <p>To drive operational efficiency, I developed and implemented standardized document templates that reduced formatting time for the technical editing team by 20%. I also manage the company website’s technical content. Furthermore, I provide actionable feedback and advice to research teams. </p>
-                </div>
-              </div>
-            </div>
-            <div class="row d-flex flex-wrap" data-aos="fade-up">
-              <div class="col-lg-6 pb-5">
-                <h2 class="display-4 txt-fx slide-up">Previous Experiences</h2>
-                <div class="data-info py-3" data-aos="fade-up">
-                  <span class="meta-date">May 2022 – September 2023</span>
-                  <h3 class="info-title">Origin Hope Media Group Limited: Subcontractor Content Writer</h3>
-                  <p>I produced over 15,000 words of high-quality content daily, including blog articles, news stories, product descriptions, and video scripts, consistently meeting strict deadlines. I collaborated effectively within a team of writers to deliver a collective output of over 100 articles per week. My role required conducting thorough research on diverse industry-related topics to generate innovative ideas and fresh content formats.</p>
-                </div>
-                <div class="data-info" data-aos="fade-up" data-aos-delay="100">
-                  <span class="meta-date">February 2021 – May 2022</span>
-                  <h3 class="info-title">PT. IZPAL Investama Properti: Mortgage Finance & Back Office HR</h3>
-                  <p>I managed daily recaps and the meticulous preparation of legal documentation for consumer mortgage applications. I took the lead in designing and implementing an administrative workflow that increased departmental efficiency by 15%, ensuring high productivity through well-organized work procedures and refined systems.
-                    <p>Additionally, I led end-to-end recruitment efforts, where I was responsible for screening, interviewing, and placing candidates in diverse operational roles to support organizational growth. My dual focus on financial documentation and human resources allowed me to implement action plans that solved operational bottlenecks and streamlined the mortgage processing cycle.</p>
-                </div>
-              </div>
-              <div class="col-lg-6 pb-5">
-                <h2 class="display-4 txt-fx slide-up">Previous Experiences</h2>
-                <div class="data-info py-3" data-aos="fade-up" data-aos-delay="200">
-                  <span class="meta-date">February 2017 – Present</span>
-                  <h3 class="info-title">Fienyx Translation: Chief Editor and Translator</h3>
-                  <p>I provide expert translation services between English and Indonesian, specializing in complex legal and technical materials. I ensure consistent terminology and tone across all projects, maintaining high quality for diverse clients. By implementing CAT tools like Trados Studio, I successfully increased proofreading and editing efficiency by 30%.
-                    <p>My role involves discussing specific requirements with clients, managing fee structures, and conducting rigorous revisions to ensure translated materials retain the exact meaning and feeling of the original content. I also perform specialized terminology checks to ensure accuracy and consistency across all revision cycles.</p>
-                </div>
-                <div class="data-info" data-aos="fade-up" data-aos-delay="300">
-                  <span class="meta-date">July 2023 – Oct 2023</span>
-                  <h3 class="info-title">LOGIOS-System: Freelance Translator and Transcriber</h3>
-                  <p>I applied a high degree of technical precision to the conversion and translation of diverse audio content. I was responsible for delivering fluent, contextually accurate Indonesian-to-English translations. I ensure that the original nuance and intent remained intact across languages. My work also involved high-efficiency English-to-English transcription and detailed Indonesian-to-Indonesian documentation.</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section id="experience" class="my-5 py-5 bg-text" data-text="03">
-            <div class="row justify-content-center mb-5">
-              <div class="col-lg-6" data-aos="fade-up">
-                <span class="text-muted text-uppercase">introduction</span>
-                <h2 class="display-1 txt-fx slide-up">About Me</h2>
-                <p>I am a dedicated QA Specialist and Linguist with a Master’s degree and over 7 years of experience in technical editing and document auditing. I am an expert in identifying issues and resolving programs promptly while maintaining a 98% accuracy rate.
-                  <p> I am adept at handling high-volume workloads, including the production of Research Vaults and Protocols. I possess strong technical prowess in Trados Studio and basic web development, combined with a deep commitment to meeting deadlines and delivering innovative, structural solutions for complex data.</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="info-element py-4" data-aos="fade-up">
-                  <table class="table">
-                    <tbody>
-                      <tr>
-                        <th>Residence</th>
-                        <td>Indonesia</td>
-                      </tr>
-                      <tr>
-                        <th>Address</th>
-                        <td>Yogyakarta</td>
-                      </tr>
-                      <tr>
-                        <th>E-mail</th>
-                        <td><a href="#">contact@putriyuniutami.com</a></td>
-                      </tr>
-                      <tr class="no-border-bottom">
-                        <th>Phone</th>
-                        <td>+62 857 4525 4350</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="skill-chart py-4" data-aos="fade-up">
-                  <ul class="skill-chart-list list-unstyled">
-                    <li>
-                      <div class="chart-header d-flex justify-content-between">
-                        <span class="skill-title">Academic Editing & Proofreading</span>
-                        <span class="percentage">95%</span>
-                      </div>
-                      <div class="chart-border">
-                        <div class="chart-percentage ninety-five-percent"></div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="chart-header d-flex justify-content-between">
-                        <span class="skill-title">Technical Documentation</span>
-                        <span class="percentage">90%</span>
-                      </div>
-                      <div class="chart-border">
-                        <div class="chart-percentage ninety-percent"></div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="chart-header d-flex justify-content-between">
-                        <span class="skill-title">Translation (English–Indonesian)</span>
-                        <span class="percentage">80%</span>
-                      </div>
-                      <div class="chart-border">
-                        <div class="chart-percentage eighty-percent"></div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="chart-header d-flex justify-content-between">
-                        <span class="skill-title">Content Writing & SEO</span>
-                        <span class="percentage">80%</span>
-                      </div>
-                      <div class="chart-border">
-                        <div class="chart-percentage eighty-percent"></div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="chart-header d-flex justify-content-between">
-                        <span class="skill-title">Research & Documentation</span>
-                        <span class="percentage">95%</span>
-                      </div>
-                      <div class="chart-border">
-                        <div class="chart-percentage ninety-five-percent"></div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section id="resumeandcv" class="my-5 py-5 bg-text" data-text="04">
-            <div class="section-header my-5" data-aos="fade-up">
-              <div class="row justify-content-center g-5">
-                <div class="col-lg-4">
-                  <span class="text-muted text-uppercase">my professional history</span>
-                </div>
-                <div class="col-lg-4" data-aos="fade-up">
-                  <p>Click below to view my professional resume:</p>
-                  <a href="/Putri.Y.Utami.RES.EN.V04042026.pdf" class="btn btn-dark px-5 py-4">Download my Resume</a>
-                </div>
-                  <div class="col-lg-4" data-aos="fade-up">
-                  <p>Click below to view my Curriculum Vitae:</p>
-                  <a href="/Putri.Y.Utami.CV.En.V04042026.pdf" class="btn btn-dark px-5 py-4">Download my CV</a>
-                </div>
-              </div>
-            </div>
-              <div class="row d-flex g-5">
-                <div class="col-lg-7" data-aos="fade-up">
-                  <h3>Frequently Asked Questions</h3>
-                  <div class="accordion" id="accordionExample2">
-                    <div class="accordion-item">
-                      <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                          data-bs-target="#accordion-collapse1" aria-expanded="true"
-                          aria-controls="accordion-collapse1">
-                          What defines your approach to Quality Assurance?
-                        </button>
-                      </h2>
-                      <div id="accordion-collapse1" class="accordion-collapse collapse show"
-                        aria-labelledby="headingOne" data-bs-parent="#accordionExample2">
-                        <div class="accordion-body">
-                          I serve as a dedicated specialist focused on the end-to-end review and production of Research Vaults. 
-                          My process involves consolidating complex research data into centralized, publication-ready repositories that meet authoritative academic standards.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="accordion-item">
-                      <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                          data-bs-target="#accordion-collapse2" aria-expanded="false"
-                          aria-controls="accordion-collapse2">
-                          How do you handle technical documentation?
-                        </button>
-                      </h2>
-                      <div id="accordion-collapse2" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                        data-bs-parent="#accordionExample2">
-                        <div class="accordion-body">
-                          I interpret intricate research handover documents to author high-quality publications tailored for specific audiences. 
-                          My role involves performing rigorous reviews and corrections, specifically focusing on clarity, grammar, and structural flow to meet strict institutional requirements.
-                        </div>
-                      </div>
-                    </div>
-                     <div class="accordion-item">
-                      <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                          data-bs-target="#accordion-collapse2" aria-expanded="false"
-                          aria-controls="accordion-collapse2">
-                          What are your primary language specializations?
-                        </button>
-                      </h2>
-                      <div id="accordion-collapse2" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                        data-bs-parent="#accordionExample2">
-                        <div class="accordion-body">
-                          I provide expert translation services between English and Indonesian, with additional proficiency in Javanese. 
-                          I specialize in handling complex legal and technical materials, as well as subtitling and academic translation
-                        </div>
-                      </div>
-                    </div>
-                    <div class="accordion-item">
-                      <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                          data-bs-target="#accordion-collapse3" aria-expanded="false"
-                          aria-controls="accordion-collapse3">
-                          Do you offer services beyond translation?
-                        </button>
-                      </h2>
-                      <div id="accordion-collapse3" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                        data-bs-parent="#accordionExample2">
-                        <div class="accordion-body">
-                          Absolutely. In addition to translation, I provide Technical Editing, Content Management, and Lesson Planning (ELT). 
-                          I help refine existing English or Indonesian texts to improve their structural integrity and pedagogical value.
-                        </div>
-                      </div>
-                    </div>
-                     <div class="accordion-item">
-                      <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                          data-bs-target="#accordion-collapse3" aria-expanded="false"
-                          aria-controls="accordion-collapse3">
-                          What is your experience with high-volume content?
-                        </button>
-                      </h2>
-                      <div id="accordion-collapse3" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                        data-bs-parent="#accordionExample2">
-                        <div class="accordion-body">
-                         I have a proven track record of producing a vast amount of relevant content daily, including blog articles, news stories, product descriptions, and video scripts.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="accordion-item">
-                      <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                          data-bs-target="#accordion-collapse3" aria-expanded="false"
-                          aria-controls="accordion-collapse3">
-                          Are you available for remote freelance projects?
-                        </button>
-                      </h2>
-                      <div id="accordion-collapse3" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                        data-bs-parent="#accordionExample2">
-                        <div class="accordion-body">
-                        Yes, I am fully equipped for remote work. I have experience collaborating with teams across different time zones.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-lg-5">
-                  <div class="right-content" data-aos="fade-up">
-
-                    <div class="element-header align-right">
-                      <h3>Feel free to send me a message or any word of appreciation.</h3>
-                    </div>
-
-                    <div class="contact-form py-4">
-                      <form action="https://api.web3forms.com/submit" method="POST">
-                        <input type="hidden" name="access_key" value="4dabbce4-dd52-4b04-8a2a-4bbe05a3d608">
-                        <div class="pb-2"><input type="text" name="name" placeholder="Your Full Name"
-                            class="form-control">
-                        </div>
-                        <div class="pb-2"><input type="text" name="address" placeholder="Your Email Address"
-                            class="form-control"></div>
-                        <div class="pb-2"><textarea placeholder="Your Message" rows="6" class="form-control"></textarea>
-                        </div>
-                        <button type="submit" name="submit" class="btn btn-dark w-100 btn-rounded">Submit</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </section>
-
-        </div>
-        <!-- / content wrapper -->
-
-      </div>
-    </main>
-
+    <nav id="one-page-menu">
+      <ul class="list-unstyled">
+        <li><a href="#home"        class="nav-link active">Home</a></li>
+        <li><a href="#about"       class="nav-link">Education &amp; Experience</a></li>
+        <li><a href="#experience"  class="nav-link">About Me</a></li>
+        <li><a href="#services"    class="nav-link">Services</a></li>
+        <li><a href="#resumeandcv" class="nav-link">Resume &amp; CV</a></li>
+        <li><a href="#testimonials" class="nav-link">Recommendations</a></li>
+        <li><a href="portfolio.html" class="nav-link">My Writing Portfolio</a></li>
+      </ul>
+    </nav>
   </div>
-  <script src="js/jquery-1.11.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-    crossorigin="anonymous"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/script.js"></script>
-</body>
 
+  <div class="sidebar-avail">
+    <span class="avail-dot"></span>
+    Available for freelance &amp; full-time
+  </div>
+</header>
+
+<!-- ══ MAIN ═════════════════════════════════════════════════════════ -->
+<main>
+  <div class="content-wrap mx-auto">
+
+    <!-- ══ HERO ══ -->
+    <section id="home" class="bg-text py-5" data-text="01">
+      <div class="row align-items-center g-5 py-4">
+
+        <div class="col-lg-5 text-center text-lg-start reveal">
+          <!-- PHOTO — replace this div with <img src="images/banner-image.png"> -->
+          <div class="hero-photo-wrap d-inline-block">
+            <img src="/images/banner-image.png" alt="Putri Yuni Utami" class="hero-photo"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="hero-photo-placeholder" style="display:none">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7 reveal reveal-delay-1">
+          <p class="hero-tagline">Linguist · Technical Editor · Translator · Content Writer</p>
+          <h1 class="display-xl mb-3">Putri<br>Yuni<br>Utami</h1>
+          <p class="hero-desc">QA Specialist and Language Professional with 8+ years of experience transforming complex research and technical documents into publication-ready, authoritative content.</p>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="hero-stat-num">8+</div>
+              <div class="hero-stat-label">Years Experience</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-num">98%</div>
+              <div class="hero-stat-label">Accuracy Rate</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-num">15K+</div>
+              <div class="hero-stat-label">Words/Day</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-num">30%</div>
+              <div class="hero-stat-label">Efficiency Gain</div>
+            </div>
+          </div>
+          <div class="hero-actions">
+            <a href="#resumeandcv" class="btn-primary-custom">Download Resume</a>
+            <a href="#experience" class="btn-outline-custom">About Me</a>
+            <a href="portfolio.html" class="btn-outline-custom">My Writing Portfolio</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Role cards -->
+      <div class="role-cards row g-3 mt-2">
+        <div class="col-lg-3 col-sm-6 reveal">
+          <div class="icon-box h-100">
+            <span>01</span>
+            <h3>QA Specialist</h3>
+            <p> Perform end-to-end review and production of Research Vaults, Compendiums, and Protocols. Ensure 100% compliance with technical and ethical standards at every stage.</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 reveal reveal-delay-1">
+          <div class="icon-box h-100">
+            <span>02</span>
+            <h3>Technical Editor</h3>
+            <p>Transform complex research handover documents into polished, publication-ready content for academic and institutional audiences. Produce 4 major publications per month.</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 reveal reveal-delay-2">
+          <div class="icon-box h-100">
+            <span>03</span>
+            <h3>Translator</h3>
+            <p> Provide expert English–Indonesian translation for legal, technical, and academic materials. Use Trados Studio to increase efficiency by 30% and ensure consistent terminology.</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 reveal reveal-delay-3">
+          <div class="icon-box h-100">
+            <span>04</span>
+            <h3>Content Writer</h3>
+            <p> Produce high-volume, deadline-driven content totaling more than 15,000 words daily across blog articles, news pieces, product descriptions, and video scripts for global media.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE BAND -->
+    <div class="marquee-band">
+      <div class="marquee-track" id="mTrack">
+        <div class="marquee-item">Technical Editing<div class="marquee-dot"></div></div>
+        <div class="marquee-item">EN–ID Translation<div class="marquee-dot"></div></div>
+        <div class="marquee-item">Quality Assurance<div class="marquee-dot"></div></div>
+        <div class="marquee-item">Content Writing &amp; SEO<div class="marquee-dot"></div></div>
+        <div class="marquee-item">Academic Proofreading<div class="marquee-dot"></div></div>
+        <div class="marquee-item">Trados Studio<div class="marquee-dot"></div></div>
+        <div class="marquee-item">Research Documentation<div class="marquee-dot"></div></div>
+        <div class="marquee-item">AI Workflow Integration<div class="marquee-dot"></div></div>
+        <div class="marquee-item">Technical Editing<div class="marquee-dot"></div></div>
+        <div class="marquee-item">EN–ID Translation<div class="marquee-dot"></div></div>
+        <div class="marquee-item">Quality Assurance<div class="marquee-dot"></div></div>
+        <div class="marquee-item">Content Writing &amp; SEO<div class="marquee-dot"></div></div>
+        <div class="marquee-item">Academic Proofreading<div class="marquee-dot"></div></div>
+        <div class="marquee-item">Trados Studio<div class="marquee-dot"></div></div>
+        <div class="marquee-item">Research Documentation<div class="marquee-dot"></div></div>
+        <div class="marquee-item">AI Workflow Integration<div class="marquee-dot"></div></div>
+      </div>
+    </div>
+
+    <!-- ══ EDUCATION & EXPERIENCE ══ -->
+    <section id="about" class="bg-text py-5" data-text="02">
+      <div class="row mb-5 reveal">
+        <div class="col-12">
+          <p class="section-meta">Credentials</p>
+        </div>
+      </div>
+<!-- Education-->
+  <div class="col-lg-6 reveal">
+      <h2 class="section-title">Education</h2>
+
+        <div class="col-lg-25 col-sm-60 reveal">
+          <div class="icon-box h-1000">
+            <span>Aug 2015 – Jul 2019</span>
+            <h4>Masters of Art in Linguistics (Translation)</h4>
+            <h3>Universitas Sebelas Maret · GPA 3.78 / 4.0</h3>
+            <p>During my graduate studies I bridged linguistic theory and practical application. I developed a strong command of research methodology and a strategic approach to applied linguistic inquiry. My work focused on the nuanced transfer of meaning across languages. I refined my ability to manage complex translation and documentation projects with analytical rigor.</p>
+          <div class="timeline-badges">
+              <span class="t-badge">Applied Linguistics</span>
+              <span class="t-badge">Translation Studies</span>
+              <span class="t-badge">Systemic Functional Linguistics</span>
+              <span class="t-badge">Functional Grammar</span>
+              <span class="t-badge">Sociolinguistics</span>
+              <span class="t-badge">Semantics</span>
+            </div>
+          </div>
+        </div>
+        <br>
+          <div class="col-lg-25 col-sm-60 reveal">
+          <div class="icon-box h-1000">
+            <span>Aug 2009 – Jun 2014</span>
+            <h4>Bachelor of English Language Education</h4>
+            <h3>Universitas Ahmad Dahlan · GPA 3.73 / 4.0</h3>
+            <p>My academic foundation was built around pedagogy and linguistic analysis. I developed a robust toolkit for deconstructing spoken and written English texts, translating theory into effective teaching strategies. Integrating applied linguistics with ELT gave me hands-on experience designing lesson plans that prioritised sound pedagogical principles and student engagement.</p>
+          <div class="timeline-badges">
+              <span class="t-badge">ELT</span>
+              <span class="t-badge">Teaching English as a Foreign Language</span>
+              <span class="t-badge">Journalism</span>
+              <span class="t-badge">English for Specific Purpose</span>
+              <span class="t-badge">Curriculum Development</span>
+              <span class="t-badge">Creative Writing</span>
+            </div>
+          </div>
+        </div>
+    </section>
+    
+        <!-- Experience -->
+     <section id="about" class="bg-text py-5" data-text="02">
+      <div class="row mb-5 reveal">
+        <div class="col-12">
+          <p class="section-meta">Career Timeline</p>
+        </div>
+      </div>
+        <div class="col-lg-6 reveal reveal-delay-1">
+          <div class="section-label"></div>
+          <h2 class="section-heading">Where I've Built<br>My Craft</h2>
+          <p class="section-subhead">A track record of high-impact contributions across research institutions, media organizations, and translation agencies.</p>
+
+          <div class="timeline-block">
+            <div class="timeline-date">Aug 2024 – Apr 2026</div>
+            <div class="timeline-title">QA Specialist</div>
+            <div class="timeline-company">Life Management Science Labs</div>
+            <div class="timeline-body">
+              I managed end-to-end review and production of 4 Research Vaults and 2 standard documents monthly. I evaluated and approved 10 Compendiums and 2 Protocols each month. I ensured 100% compliance with technical specifications and ethical guidelines. I audited 5–15 documents monthly and sustained a 98% proofreading accuracy rate.
+              <br><br>
+             I collaborated with Technical Editors to implement 75% of suggested process improvements quarterly. I maintained complete records of all assessments in Asana. I consolidated complex research data into publication-ready repositories. 
+            </div>
+            <div class="timeline-badges">
+              <span class="t-badge">98% Accuracy</span>
+              <span class="t-badge">10 Compendiums/Month</span>
+              <span class="t-badge">4 Research Vaults/Month</span>
+              <span class="t-badge">2-4 Stadard Documents/Month</span>
+              <span class="t-badge">Content QA</span>
+              <span class="t-badge">100% Compliance</span>
+              <span class="t-badge">Content QA</span>
+              <span class="t-badge">Cross-functional collaboration</span>
+            </div>
+          </div>
+
+          <div class="timeline-block">
+            <div class="timeline-date">Aug 2023 – Jul 2024</div>
+            <div class="timeline-title">Technical Editor</div>
+            <div class="timeline-company">Life Management Science Labs</div>
+            <div class="timeline-body">
+              I interpreted complex research handover documents to author high-quality publications, producing four major technical documents monthly for specific academic audiences. I partnered with Junior and Senior Researchers to ensure 100% accuracy in content, style, and technical specifications.
+              <br><br>
+              I developed standardized document templates that reduced the team's formatting time by 20%, managed website technical content, and delivered actionable editorial feedback to research teams.
+            </div>
+            <div class="timeline-badges">
+              <span class="t-badge">4 Publications/Month</span>
+              <span class="t-badge">20% Efficiency Gain</span>
+              <span class="t-badge">100% Spec Accuracy</span>
+              <span class="t-badge">Technical editor</span>
+              <span class="t-badge">Scientific writing</span>
+              <span class="t-badge">Technical writing</span>
+              <span class="t-badge">Website content</span>
+            </div>
+          </div>
+      </div>
+
+      <div class="row g-5 mt-1">
+        <!-- Previous Experience Left -->
+         <div class="col-lg-6 reveal">
+          <h2 class="section-title mb-4">Previous Experiences</h2>
+
+          <div class="timeline-block">
+            <div class="timeline-date">May 2022 – Sep 2023</div>
+            <div class="timeline-title">Subcontractor Content Writer</div>
+            <div class="timeline-company">Origin Hope Media Group Limited</div>
+            <div class="timeline-body">I produced more than 15,000 words of high-quality content daily, including blog articles, news stories, product descriptions, and video scripts, and I consistently met strict deadlines. I collaborated with a team of writers to deliver over 100 articles per week, conducting thorough industry research to generate innovative, audience-specific content.</div>
+            <div class="timeline-badges">
+              <span class="t-badge">15,000+ Words/Day</span>
+              <span class="t-badge">100+ Articles/Week</span>
+              <span class="t-badge">Content Writer</span>
+              <span class="t-badge">Copywriting</span>
+              <span class="t-badge">SEO writing</span>
+              <span class="t-badge">News writing</span>
+              <span class="t-badge">Blog writing</span>
+              <span class="t-badge">Video scriptwriting</span>
+              <span class="t-badge">Content Management System (CMS) </span>
+            </div>
+          </div>
+
+          <hr class="timeline-sep">
+
+          <div class="timeline-block">
+            <div class="timeline-date">Feb 2021 – May 2022</div>
+            <div class="timeline-title">Mortgage Finance &amp; Back Office HR</div>
+            <div class="timeline-company">PT. IZPAL Investama Properti</div>
+            <div class="timeline-body">I managed daily recaps and meticulously prepared legal documentation for consumer mortgage applications. I designed and implemented an administrative workflow that increased departmental efficiency by 15%. I led end-to-end recruitment by screening, interviewing, and placing candidates across operational roles to support organizational growth.</div>
+            <div class="timeline-badges">
+              <span class="t-badge">15% Efficiency Increase</span>
+              <span class="t-badge">Legal Documentation</span>
+              <span class="t-badge">Mortgage documentation</span>
+              <span class="t-badge">Administrative workflow</span>
+              <span class="t-badge">Operations support</span>
+              <span class="t-badge">Recruitment</span>
+              <span class="t-badge">Candidate screening</span>
+              <span class="t-badge">Interviewing</span>
+              <span class="t-badge">Records management</span>
+              <span class="t-badge">Consumer mortgage applications</span>
+              <span class="t-badge">Workflow design</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Previous Experience Right -->
+        <div class="col-lg-6 reveal reveal-delay-1">
+          <h2 class="section-title mb-4">&nbsp;</h2>
+
+          <div class="timeline-block">
+            <div class="timeline-date">Feb 2017 – Present</div>
+            <div class="timeline-title">Chief Editor &amp; Translator</div>
+            <div class="timeline-company">Fienyx Translation</div>
+            <div class="timeline-body">I provide expert English ↔ Indonesian translation services. I specialize in legal and technical materials. I ensure consistent terminology across all projects. I ensure an appropriate tone for each document. I make sure each document communicates clearly. I preserve the original intent of every text.
+            <br> <br>
+            I implement Trados Studio and CAT workflows. I increased proofreading and editing efficiency by 30%. I enable faster turnaround without sacrificing quality. I manage client requirements. I set and oversee fee structures. I run rigorous revision cycles. I ensure translated materials accurately preserve meaning and maintain the correct register. I meet deadlines and respect budget constraints. </div>
+            <div class="timeline-badges">
+              <span class="t-badge">30% Efficiency Gain</span>
+              <span class="t-badge">Trados Studio</span>
+              <span class="t-badge">English ↔ Indonesian translation</span>
+              <span class="t-badge">Legal & Technical Documents</span>
+              <span class="t-badge">Client-focused service</span>
+              <span class="t-badge">Editing and proofreading</span>
+              <span class="t-badge">Localization services</span>
+            </div>
+          </div>
+
+          <hr class="timeline-sep">
+
+          <div class="timeline-block">
+            <div class="timeline-date">Jul 2023 – Oct 2023</div>
+            <div class="timeline-title">Freelance Translator &amp; Transcriber</div>
+            <div class="timeline-company">LOGIOS-System</div>
+            <div class="timeline-body">I applied high technical precision to the conversion and translation of diverse audio content. I delivered fluent and contextually accurate Indonesian-to-English translations. I ensured the original nuance and intent remained intact.
+            <b></b>
+            I also produced high-efficiency English transcriptions. I prepared accurate Indonesian documentation derived from audio sources. I maintained consistent terminology and clear formatting to support downstream review and localization processes. </div>
+           <div class="timeline-badges">
+              <span class="t-badge">Freelance translator</span>
+              <span class="t-badge">Freelance transcriber</span>
+              <span class="t-badge">Audio transcription</span>
+              <span class="t-badge">Audio translation</span>
+              <span class="t-badge">Timestamping</span>
+              <span class="t-badge">Verbatim transcription</span>
+              <span class="t-badge">Editing and proofreading</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ METRICS BAND ══ -->
+    <div class="metrics-strip reveal">
+      <div class="content-wrap mx-auto">
+        <div class="row g-4">
+          <div class="col-6 col-lg-3">
+            <div class="metric-item">
+              <div class="metric-num">98<small style="font-size:60%">%</small></div>
+              <div class="metric-label">Proofreading Accuracy Rate</div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="metric-item">
+              <div class="metric-num">8<small style="font-size:60%">+</small></div>
+              <div class="metric-label">Years of Experience</div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="metric-item">
+              <div class="metric-num">15K<small style="font-size:60%">+</small></div>
+              <div class="metric-label">Words Produced Daily</div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="metric-item">
+              <div class="metric-num">20<small style="font-size:60%">%</small></div>
+              <div class="metric-label">Formatting Time Reduced</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ABOUT ME ══ -->
+    <section id="experience" class="bg-text py-5" data-text="03">
+      <div class="row justify-content-center mb-5 reveal">
+        <div class="col-lg-7">
+          <p class="section-meta">Introduction</p>
+          <h2 class="section-title mb-4">About Me</h2>
+          <h2>Words handled with <em>precision</em>, not just care.</h2>
+          <p class="mb-3">I am a dedicated QA specialist and linguist with a Master’s degree in Linguistics (Translation) and over 8 years of hands-on experience in technical editing, document auditing, and English–Indonesian translation. I handle words with precision, not just care. I ensure that complex ideas are communicated with absolute clarity</p>
+          <p>I have managed high-volume workflows in academic and corporate settings. I maintained a 98% proofreading accuracy rate throughout my career. I treat language quality as more than grammar; I treat it as integrity, trust, and the reader’s experience.</p>
+        </div>
+      </div>
+
+      <div class="row g-5">
+        <div class="col-lg-6 reveal">
+          <table class="table info-table">
+            <tbody>
+              <tr><th>Residence</th><td>Indonesia</td></tr>
+              <tr><th>Location</th><td>Yogyakarta</td></tr>
+              <tr><th>Email</th><td><a href="mailto:contact@putriyuniutami.com" style="color:var(--primary)">contact@putriyuniutami.com</a></td></tr>
+              <tr><th>Alt. Email</th><td><a href="mailto:putriyuniutami14@gmail.com" style="color:var(--primary)">putriyuniutami14@gmail.com</a></td></tr>
+              <tr><th>Phone</th><td>+62 857 4525 4350</td></tr>
+              <tr><th>Languages</th><td>Indonesian · Javanese · English</td></tr>
+              <tr><th>Website</th><td><a href="https://putriyuniutami.com" target="_blank" style="color:var(--primary)">putriyuniutami.com</a></td></tr>
+              <tr><th>Availability</th><td>Open to Remote &amp; On-site</td></tr>
+            </tbody>
+          </table>
+
+          <!-- Certifications -->
+          <div class="mt-4">
+            <h4 class="mb-3" style="font-size:1rem">Certifications</h4>
+            <ul class="list-unstyled">
+              <li class="d-flex align-items-start gap-2 mb-2">
+                <span style="color:var(--primary);margin-top:3px">▸</span>
+                <span style="font-size:.85rem">CISDE: Certified International Specialist in Data Engineering (PASAS)</span>
+              </li>
+              <li class="d-flex align-items-start gap-2 mb-2">
+                <span style="color:var(--primary);margin-top:3px">▸</span>
+                <span style="font-size:.85rem">SEO Professional Certificate — Moz</span>
+              </li>
+              <li class="d-flex align-items-start gap-2 mb-2">
+                <span style="color:var(--primary);margin-top:3px">▸</span>
+                <span style="font-size:.85rem">Responsible AI Foundations — All Tech Is Human</span>
+              </li>
+              <li class="d-flex align-items-start gap-2 mb-2">
+                <span style="color:var(--primary);margin-top:3px">▸</span>
+                <span style="font-size:.85rem">Web Programming: Fundamental Steps — HACKTIV8</span>
+              </li>
+              <li class="d-flex align-items-start gap-2">
+                <span style="color:var(--primary);margin-top:3px">▸</span>
+                <span style="font-size:.85rem">Translation: Bengkel Penerjemahan — Ministry of Education and Culture Republic of Indonesia</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-6 reveal reveal-delay-1">
+          <h4 class="mb-4" style="font-size:1rem">Core Skills</h4>
+          <div class="skill-item">
+            <div class="skill-header"><span class="skill-name">Academic Editing &amp; Proofreading</span><span class="skill-pct">97%</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.97"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header"><span class="skill-name">Research &amp; Documentation</span><span class="skill-pct">95%</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.95"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header"><span class="skill-name">Technical Documentation</span><span class="skill-pct">92%</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.92"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header"><span class="skill-name">Translation (English–Indonesian)</span><span class="skill-pct">90%</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.90"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header"><span class="skill-name">Content Writing &amp; SEO</span><span class="skill-pct">88%</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.88"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header"><span class="skill-name">Quality Assurance &amp; Auditing</span><span class="skill-pct">95%</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.95"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header"><span class="skill-name">Generative AI &amp; Prompt Engineering</span><span class="skill-pct">92%</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.92"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header"><span class="skill-name">Trados Studio (CAT Tools)</span><span class="skill-pct">88%</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.88"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SERVICES ══ -->
+    <section id="services" class="bg-text py-5" data-text="SV" style="background:var(--light)">
+      <p class="section-meta reveal">What I Offer</p>
+      <h2 class="section-title reveal">Services That Deliver Results</h2>
+      <p class="reveal" style="color:var(--gray-dk);max-width:560px;margin-top:.5rem">
+        I bridge the gap between raw data and polished prose. Whether it’s rigorous research or final edits, expect consistent quality delivered at pace.
+      </p>
+
+      <div class="services-grid reveal">
+        <div class="service-card">
+          <span class="service-num">01</span>
+          <h4>Technical Editing &amp; Proofreading</h4>
+          <p>End-to-end review of research papers, protocols, and institutional reports. I correct grammar, fix structural flow, and ensure style-guide compliance at high volume without sacrificing a single percentage of accuracy.</p>
+          <div class="service-tags">
+            <span class="service-tag">Academic Papers</span>
+            <span class="service-tag">Protocols</span>
+            <span class="service-tag">Compendiums</span>
+            <span class="service-tag">Research Vaults</span>
+            <span class="service-tag">Standard Documents</span>
+            <span class="service-tag">SOPs</span>
+            <span class="service-tag">Compliance with APA, Vancouver, and Custom Style Guides</span>
+          </div>
+        </div>
+        <div class="service-card">
+          <span class="service-num">02</span>
+          <h4>English↔Indonesian Translation</h4>
+          <p>Precise, culturally-attuned translation for legal, technical, and corporate materials. Using Trados Studio and specialized terminology databases, I deliver translations that retain the tone, intent, and exactness of the original.</p>
+          <div class="service-tags">
+            <span class="service-tag">Technical & Legal</span>
+            <span class="service-tag">Trados Studio</span>
+            <span class="service-tag">Linguistic Validation</span>
+            <span class="service-tag">Publication-Ready</span>
+            <span class="service-tag">CAT Tools</span>
+            <span class="service-tag">Terminological Consistency</span>
+          </div>
+        </div>
+        <div class="service-card">
+          <span class="service-num">03</span>
+          <h4>Quality Assurance &amp; Document Auditing</h4>
+          <p>Systematic review of documentation pipelines to ensure compliance, accuracy, and consistency. I audit 5–10 documents monthly at institutional level and implement process improvements that streamline publication workflows.</p>
+          <div class="service-tags">
+            <span class="service-tag">Document Compliance Review</span>
+            <span class="service-tag">Workflow & Process Auditing</span>
+            <span class="service-tag">Template Standardization</span>
+            <span class="service-tag">Approval Tracking & Reporting</span>
+          </div>
+        </div>
+        <div class="service-card">
+          <span class="service-num">04</span>
+          <h4>Content Writing &amp; Copywriting</h4>
+          <p>High-output content creation for blogs, news articles, product descriptions, and video scripts. With 15,000+ words delivered daily at Origin Hope Media, I know how to write fast, write well, and write for your audience.</p>
+          <div class="service-tags">
+            <span class="service-tag">SEO Blog Articles</span>
+            <span class="service-tag">Long-orm Content</span>
+            <span class="service-tag">Product Descriptions</span>
+            <span class="service-tag">E-commerce Copy</span>
+            <span class="service-tag">Video Scripts</span>
+            <span class="service-tag">Multimedia Content</span>
+            <span class="service-tag">Ghostwriting</span>
+            <span class="service-tag">Brand Storytelling</span>
+          </div>
+        </div>
+        <div class="service-card">
+          <span class="service-num">05</span>
+          <h4>Academic Editing &amp; Research Support</h4>
+          <p>Specialized support for academics, researchers, and students submitting to journals or institutions. I validate for academic adherence, eliminate language barriers, and ensure your research reads as credibly as your findings deserve.</p>
+          <div class="service-tags">
+            <span class="service-tag">Journal Submission editing</span>
+            <span class="service-tag">Thesis & dissertation Review</span>
+            <span class="service-tag">Abstract & Summary Writing</span>
+            <span class="service-tag">Citation & Reference Formatting</span>
+          </div>
+        </div>
+        <div class="service-card">
+          <span class="service-num">06</span>
+          <h4>AI-Assisted Editing &amp; Transcription</h4>
+          <p>Leveraging advanced prompt engineering and AI-driven transcription to transform raw audio or data into polished assets at pace. I utilize AI to handle the heavy lifting of structural drafting and transcription, followed by an expert human review to eliminate hallucinations and refine flow. High speed, zero compromise. Every output undergoes a rigorous linguistic audit to ensure accuracy, tone, and brand alignment.</p>
+          <div class="service-tags">
+            <span class="service-tag">AI Content Auditing</span>
+            <span class="service-tag">Transcription</span>
+            <span class="service-tag">Prompt Engineering</span>
+            <span class="service-tag">Human-in-the-Loop (HITL)</span>
+            <span class="service-tag">Audio-to-Text Processing</span>
+            <span class="service-tag">Ethical AI Implementation</span>
+            <span class="service-tag">Post-AI Refinement</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ RESUME & CV + FAQ ══ -->
+    <section id="resumeandcv" class="bg-text py-5" data-text="04">
+      <div class="row mb-5 reveal">
+        <div class="col-12">
+          <p class="section-meta">My Professional History</p>
+          <h2 class="section-title">Resume &amp; CV</h2>
+        </div>
+      </div>
+
+      <div class="row g-4 mb-5">
+        <div class="col-lg-4 reveal">
+          <a href="/Putri.Y.Utami.RES.EN.V09042026.pdf" class="download-card d-block" download>
+            <div class="download-card-type">Resume</div>
+            <h4>Full Resume</h4>
+            <p>Complete professional history including all roles, publications, certifications, education, and detailed competencies.</p>
+            <span class="btn-primary-custom mt-2" style="font-size:.8rem;padding:.6rem 1.4rem">Download Resume →</span>
+          </a>
+        </div>
+        <div class="col-lg-4 reveal reveal-delay-1">
+          <a href="/Putri.Y.Utami.CV.En.V09042026.pdf" class="download-card d-block" download>
+            <div class="download-card-type">Curriculum Vitae</div>
+            <h4>Professional Curriculum Vitae</h4>
+            <p>Concise two-page summary of my skills, experience, and key achievements.</p>
+            <span class="btn-primary-custom mt-2" style="font-size:.8rem;padding:.6rem 1.4rem">Download CV →</span>
+          </a>
+        </div>
+        <div class="col-lg-4 reveal reveal-delay-2">
+          <div class="download-card h-100" style="border-color:var(--ink)">
+            <div class="download-card-type" style="color:var(--ink)">Contact</div>
+            <h4>Start a Project</h4>
+            <p>Ready to work together? Send me a project brief and I'll respond with a quote and timeline within one business day.</p>
+            <a href="mailto:contact@putriyuniutami.com" class="btn-outline-custom mt-2 d-inline-block" style="font-size:.8rem;padding:.6rem 1.4rem">Send a Brief →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="row g-5">
+        <div class="col-lg-7 reveal">
+          <h3 class="mb-4">Frequently Asked Questions</h3>
+          <div class="accordion faq-wrap" id="faqAccordion">
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                  What defines your approach to Quality Assurance?
+                </button>
+              </h2>
+              <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">As a dedicated end-to-end QA specialist, I manage the complete review and production of Research Vaults. I consolidate complex data into centralized, publication-ready repositories that meet rigorous academic and institutional standards. My process is built on a 98% accuracy baseline rather than a target.</div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                  How do you handle technical documentation?
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">I transform complex research handover documents into high-quality publications for targeted audiences. Beyond authoring, I conduct rigorous reviews to refine clarity, grammar, and structural flow according to strict institutional standards.</div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                  What are your primary language specialisations?
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">I offer expert translation between English and Indonesian with additional fluency in Javanese. I specialize in legal and technical documentation, academic translation, and subtitling. I use Trados Studio to manage every project to ensure that terminology remains consistent through every stage of the revision process.</div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                  Do you offer services beyond translation?
+                </button>
+              </h2>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Absolutely. In addition to translation, I offer Technical Editing, Quality Assurance, Content Writing &amp; SEO, Academic Proofreading, Transcription, and AI-assisted workflow integration. I help refine existing English or Indonesian texts to improve structural integrity, readability, and audience fit.</div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                  What is your experience with high-volume content?
+                </button>
+              </h2>
+              <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">I have a proven track record of producing over 15,000 words of publication-quality content daily. My portfolio spans blog articles, news stories, product descriptions, and video scripts, all delivered under strict deadlines.</div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                  What is your typical turnaround time?
+                </button>
+              </h2>
+              <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">For standard proofreading or editing (up to 5,000 words), I typically deliver within 24–48 hours. Longer documents and full translation projects are scoped individually based on complexity. I offer expedited turnaround for urgent requests. Please mention your deadline in your initial message. Meeting deadlines is a non-negotiable part of my professional practice.</div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                  Can you handle confidential documents?
+                </button>
+              </h2>
+              <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Yes. Given my background in legal translation and academic research, I place the highest priority on data confidentiality. I welcome the opportunity to sign an NDA before we begin working together. Your files are managed through secure protocols, retained only as long as the project requires, and are never disclosed to third parties.</div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8">
+                  Are you available for remote freelance projects?
+                </button>
+              </h2>
+              <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Yes. I am fully equipped for remote work and have extensive experience collaborating with teams across different time zones. I also offer monthly retainer packages for organisations that need consistent editorial, translation, QA, or content support. Retainer clients receive priority scheduling and a dedicated monthly capacity.</div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq9">
+                  What tools do you use?
+                </button>
+              </h2>
+              <div id="faq9" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">I employ a specialized suite of tools to deliver high-quality content at scale. My process centers on Trados Studio for translation and Microsoft Word or Google Docs for tracked-changes editing. To ensure seamless delivery and SEO performance, I utilize Asana, Google Workspace, and Moz. Additionally, I stay at the forefront of the industry by incorporating generative AI tools such as Claude and Midjourney into my creative workflows, alongside experience in CMS-based content publishing.</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="col-lg-5 reveal reveal-delay-1">
+          <h3 class="mb-1">Send Me a Message</h3>
+          <p class="mb-4" style="color:var(--gray-dk);font-size:.88rem">Have a project in mind? I'll respond within one business day.</p>
+
+          <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+            <input type="hidden" name="access_key" value="4dabbce4-dd52-4b04-8a2a-4bbe05a3d608">
+
+            <div class="mb-3">
+              <label class="form-label">Your Full Name</label>
+              <input type="text" name="name" placeholder="Jane Smith" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email Address</label>
+              <input type="email" name="email" placeholder="jane@company.com" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Service Needed</label>
+              <select name="service" class="form-control">
+                <option value="" disabled selected>Select a service…</option>
+                <option>Technical Editing &amp; Proofreading</option>
+                <option>English–Indonesian Translation</option>
+                <option>Quality Assurance / Document Auditing</option>
+                <option>Content Writing &amp; SEO</option>
+                <option>Academic Editing</option>
+                <option>AI-Assisted Workflows / Transcription</option>
+                <option>Other / Multiple Services</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Word Count (approx.)</label>
+              <input type="text" placeholder="e.g. 5,000 words" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Project Brief</label>
+              <textarea name="message" rows="5" placeholder="Tell me about your project; document type, word count, deadline, and any specific requirements…" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">
+              <span>Send Message</span>
+              <span>→</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TESTIMONIALS ══ -->
+    <section id="testimonials" class="py-5" style="background:var(--light)">
+      <p class="section-meta reveal">Recommendations</p>
+      <h2 class="section-title reveal mb-4">What People Say</h2>
+
+      <div class="row g-4">
+        <div class="col-lg-4 reveal">
+          <div class="testimonial-card">
+            <span class="testimonial-quote-mark">"</span>
+            <div class="stars">Cynthia Claudia</div>
+            <p class="testimonial-text"> <p>"Glad I had the opportunity to work alongside Putri in the same department - a reliable and diligent colleague with keen attention to small details, and always full of remarkable and innovative ideas to ensure highest quality outputs."</p>
+              <p>"I remember she always provides thoughtful suggestions that help team members improve their work and processes. Her feedback is always clear, constructive, and focused on achieving the best possible outcome for our team."</p>
+            <div class="testimonial-author-name">Technical Editorial Manager</div>
+            <div class="testimonial-author-role">Life Management Science Labs</div>
+          </div>
+        </div>
+        <div class="col-lg-4 reveal reveal-delay-1">
+          <div class="testimonial-card">
+            <span class="testimonial-quote-mark">"</span>
+            <div class="stars">Nadine Aref</div>
+            <p class="testimonial-text"><p>"I had the pleasure of working with Putri on the QA team, where we focused on different aspects of quality assurance—she handled the content side while I focused on grammar and style. Putri is incredibly thorough in her research and brings a strong sense of responsibility to her work. She consistently dives deep into sources, ensures accuracy, and approaches tasks with impressive diligence. Her work ethic and attention to detail make her a very reliable colleague, and she is someone you can trust to maintain high standards of quality."</p>
+            <div class="testimonial-author-name">QA Specialist</div>
+            <div class="testimonial-author-role">Life Management Science Labs</div>
+          </div>
+        </div>
+        <div class="col-lg-4 reveal reveal-delay-2">
+          <div class="testimonial-card">
+            <span class="testimonial-quote-mark">"</span>
+            <div class="stars">Edrin Carl Hernandez</div>
+            <p class="testimonial-text"><p>"I had the privilege of working with Putri during my time in the Publishing team, where she served as our QA Specialist. She is one of the most dependable and reliable colleagues I have worked with."</p>
+                                        <p>"Putri played an important role in helping me improve my writing skills. She patiently guided me through revisions and feedback, always choosing her words carefully and kindly. Her approach made learning easier and less intimidating, especially when I was still developing my confidence as a writer. I truly appreciated the way she supported me and helped me grow."</p>
+                                        <p>"What I admire most about Putri is that the quality of her work reflects who she is as a person. She is thoughtful, consistent, and genuinely supportive of the people around her. Her professionalism, patience, and willingness to help others make her someone any team would be fortunate to have."</p>
+                                        <p>"Wherever Putri goes, I know she will rise and shine. Her kindness, dedication, and strong character will always leave a positive impact on the people she works with."</p>
+            <div class="testimonial-author-name">Technical Editor</div>
+            <div class="testimonial-author-role">Life Management Science Labs</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /content-wrap -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-copy">© 2026 Putri Yuni Utami · Language &amp; Content Specialist · Yogyakarta, Indonesia</div>
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/putri-yuni-utami/" target="_blank">LinkedIn</a>
+      <a href="https://putriyuniutami.com/" target="_blank">Website</a>
+      <a href="mailto:contact@putriyuniutami.com">Email</a>
+      <a href="portfolio.html">My Writing Portfolio</a>
+    </div>
+  </footer>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// ── MOBILE MENU
+document.getElementById('menuBtn').addEventListener('click', () => {
+  document.body.classList.toggle('nav-active');
+});
+document.querySelectorAll('#one-page-menu .nav-link').forEach(link => {
+  link.addEventListener('click', () => document.body.classList.remove('nav-active'));
+});
+
+// ── ACTIVE NAV on scroll
+const sections = document.querySelectorAll('section[id], div[id]');
+const navLinks = document.querySelectorAll('#one-page-menu .nav-link');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(sec => {
+    if (window.scrollY >= sec.offsetTop - 140) current = sec.id;
+  });
+  navLinks.forEach(l => {
+    l.classList.remove('active');
+    if (l.getAttribute('href') === '#' + current) l.classList.add('active');
+  });
+}, { passive: true });
+
+// ── SCROLL REVEAL
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ── SKILL BAR ANIMATION
+const skillObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+        const w = bar.dataset.width;
+        setTimeout(() => {
+          bar.style.transform = `scaleX(${w})`;
+          bar.classList.add('animated');
+        }, 200);
+      });
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('#experience .col-lg-6').forEach(el => skillObserver.observe(el));
+
+// ── NAV shadow on scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('sidebar').style.boxShadow =
+    window.scrollY > 20 ? '2px 0 16px rgba(0,0,0,0.06)' : '';
+}, { passive: true });
+</script>
+</body>
 </html>
