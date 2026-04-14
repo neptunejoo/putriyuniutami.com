@@ -3,10 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Writing Portfolio — Putri Yuni Utami</title>
+<title>Writing Portfolio — Putri Yuni Utami | Articles, Research & Podcast Content</title>
 <link rel="icon" type="image/x-icon" href="/images/favicon.png">
-<meta name="description" content="Writing portfolio of Putri Yuni Utami — articles published in The Jakarta Post, LMSL Insights, ILMS Publications, and academic journals.">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&family=Roboto+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<meta name="description" content="Writing portfolio of Putri Yuni Utami — articles in The Jakarta Post, LMSL Insights, ILMS research publications, podcast episode articles for Life Management Science Labs, and peer-reviewed academic works.">
+<meta name="keywords" content="Putri Yuni Utami, writing portfolio, Jakarta Post, LMSL Insights, podcast articles, Life Management Science Labs, academic publications, technical editor, content writer, Indonesia">
+<meta name="author" content="Putri Yuni Utami">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://putriyuniutami.com/portfolio.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://putriyuniutami.com/portfolio.html">
+<meta property="og:title" content="Writing Portfolio — Putri Yuni Utami">
+<meta property="og:description" content="Articles, research publications, and podcast content by Putri Yuni Utami — QA Specialist & Language Professional.">
+<meta property="og:image" content="https://putriyuniutami.com/images/banner-image.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Writing Portfolio — Putri Yuni Utami">
+<meta name="twitter:description" content="Articles, research publications, and podcast content by Putri Yuni Utami.">
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,300;1,9..40,400&family=DM+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
@@ -22,8 +39,8 @@
   --light:      #F1F1F0;
   --white:      #ffffff;
   --border:     #e8e8e6;
-  --font:       "Roboto", Verdana, sans-serif;
-  --mono:       "Roboto Mono", monospace;
+  --font:       "DM Sans", Verdana, sans-serif;
+  --mono:       "DM Mono", monospace;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -65,12 +82,12 @@ a:hover { color: var(--primary); }
 /* ── SIDEBAR ── */
 header {
   position: fixed; left: 0; top: 0;
-  width: 220px; height: 100vh;
+  width: 260px; height: 100vh;
   background: var(--white);
   border-right: 1px solid var(--border);
   z-index: 100;
   display: flex; flex-direction: column;
-  padding: 2.5rem 1.8rem;
+  padding: 2.5rem 2rem;
   overflow-y: auto;
 }
 
@@ -81,8 +98,10 @@ header {
 }
 
 .sidebar-email {
-  display: block; font-size: 0.72rem;
-  color: var(--gray-dk); word-break: break-all;
+  display: block; font-size: 0.76rem;
+  color: var(--gray-dk); word-break: normal;
+  white-space: nowrap; overflow: hidden;
+  text-overflow: ellipsis;
   padding: 0.8rem 0; border-bottom: 1px solid var(--border);
   margin-bottom: 1rem;
 }
@@ -136,7 +155,7 @@ header {
 }
 
 /* ── MAIN ── */
-main { margin-left: 220px; }
+main { margin-left: 260px; }
 
 /* ── PORTFOLIO HERO ── */
 #port-hero {
@@ -192,8 +211,8 @@ main { margin-left: 220px; }
   position: sticky; top: 0; z-index: 50;
   background: var(--white);
   border-bottom: 1px solid var(--border);
-  padding: 0.75rem 3rem;
-  display: flex; align-items: center; gap: 0.4rem;
+  padding: 0.6rem 3rem;
+  display: flex; align-items: center; gap: 0.35rem;
   flex-wrap: wrap;
   box-shadow: 0 2px 12px rgba(0,0,0,0.04);
 }
@@ -383,12 +402,66 @@ footer {
   padding: 2rem 3rem;
   display: flex; justify-content: space-between;
   align-items: center; flex-wrap: wrap; gap: 1rem;
-  margin-left: 220px;
+  margin-left: 260px;
 }
 footer a { color: rgba(255,255,255,0.45); font-size: 0.8rem; }
 footer a:hover { color: var(--primary); }
 .footer-copy { font-size: 0.78rem; }
 .footer-links { display: flex; gap: 1.5rem; }
+
+/* ── PODCAST GRID: 4-col compact ── */
+#grid-podcast {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.podcast-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-top: 2px solid var(--primary);
+  border-radius: 2px; padding: 0.85rem 1rem;
+  display: flex; flex-direction: column; gap: 6px;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+  opacity: 0; transform: translateY(16px);
+}
+.podcast-card.visible { animation: cardIn 0.4s cubic-bezier(0.16,1,0.3,1) forwards; }
+.podcast-card.hidden { display: none !important; }
+.podcast-card:hover { background: var(--primary-lt); box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
+.podcast-show {
+  font-family: var(--mono); font-size: 0.55rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gray); line-height: 1.4;
+}
+.podcast-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.88rem; font-weight: 400;
+  color: var(--ink); line-height: 1.3; flex: 1;
+}
+.podcast-links {
+  display: flex; gap: 4px; flex-wrap: wrap; align-items: center;
+  padding-top: 5px; border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+.podcast-link {
+  display: inline-flex; align-items: center; gap: 3px;
+  font-size: 0.58rem; font-weight: 600; letter-spacing: 0.04em;
+  padding: 2px 7px; border-radius: 2px;
+  transition: all 0.2s; text-decoration: none; white-space: nowrap;
+}
+.podcast-link.article { background: var(--ink); color: var(--primary); }
+.podcast-link.article:hover { background: var(--primary); color: var(--white); }
+.podcast-link.apple { border: 1px solid #8c50f5; color: #8c50f5; }
+.podcast-link.apple:hover { background: #8c50f5; color: var(--white); }
+.podcast-link.youtube { border: 1px solid #e2392d; color: #e2392d; }
+.podcast-link.youtube:hover { background: #e2392d; color: var(--white); }
+.podcast-tags { display: flex; gap: 3px; flex-wrap: wrap; }
+.podcast-tag {
+  font-size: 0.55rem; padding: 1px 6px;
+  border: 1px solid var(--border); color: var(--primary-dk);
+  background: white; border-radius: 20px; letter-spacing: 0.03em;
+}
+@media (max-width: 1200px) { #grid-podcast { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px)  { #grid-podcast { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px)  { #grid-podcast { grid-template-columns: 1fr; } }
 
 /* ── FADE IN ── */
 .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
@@ -411,6 +484,21 @@ footer a:hover { color: var(--primary); }
   .card.featured { grid-column: span 1; }
   #filter-bar { gap: 0.3rem; }
 }
+
+/* ── BACK TO TOP ── */
+#back-to-top {
+  position: fixed; bottom: 2rem; right: 2rem;
+  width: 42px; height: 42px;
+  background: var(--ink); color: var(--primary);
+  border: none; cursor: pointer; z-index: 999;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; opacity: 0; pointer-events: none;
+  transition: opacity 0.3s, background 0.2s;
+  border-radius: 2px;
+}
+#back-to-top.visible { opacity: 1; pointer-events: all; }
+#back-to-top:hover { background: var(--primary); color: var(--white); }
+
 </style>
 </head>
 <body>
@@ -493,7 +581,11 @@ footer a:hover { color: var(--primary); }
     <div class="port-hero-stats">
       <div class="port-stat">
         <div class="port-stat-num">25</div>
-        <div class="port-stat-label">Published Pieces</div>
+        <div class="port-stat-label">Published Articles</div>
+      </div>
+      <div class="port-stat">
+        <div class="port-stat-num">82</div>
+        <div class="port-stat-label">Podcast Articles</div>
       </div>
       <div class="port-stat">
         <div class="port-stat-num">4</div>
@@ -513,6 +605,7 @@ footer a:hover { color: var(--primary); }
     <button class="filter-btn" data-filter="jakarta-post">Jakarta Post</button>
     <button class="filter-btn" data-filter="lmsl">LMSL Insights</button>
     <button class="filter-btn" data-filter="ilms">ILMS Publications</button>
+    <button class="filter-btn" data-filter="podcast">Podcast Articles</button>
     <button class="filter-btn" data-filter="academic">Academic</button>
     <button class="filter-btn" data-filter="career">Career</button>
     <button class="filter-btn" data-filter="health">Health</button>
@@ -521,6 +614,9 @@ footer a:hover { color: var(--primary); }
     <button class="filter-btn" data-filter="tech">Tech</button>
     <button class="filter-btn" data-filter="lifestyle">Lifestyle</button>
     <button class="filter-btn" data-filter="research">Research</button>
+    <button class="filter-btn" data-filter="parenting">Parenting</button>
+    <button class="filter-btn" data-filter="family">Family</button>
+    <button class="filter-btn" data-filter="home">Home</button>
   </div>
 
   <!-- PORTFOLIO CONTENT -->
@@ -976,7 +1072,838 @@ footer a:hover { color: var(--primary); }
 
     </div><!-- /academic grid -->
 
+    <!-- ─── 05. PODCAST ARTICLES ─── -->
+    <div class="port-section-hd fade-in" id="hd-podcast">
+      <span class="port-sec-num">05</span>
+      <span class="port-sec-name">Life Management Science Labs · Podcast Episode Articles</span>
+      <span class="port-sec-count">60 articles</span>
+    </div>
+    <div id="grid-podcast">
+      <div class="podcast-card" data-cats="podcast parenting wellness health">
+        <p class="podcast-show">Raising Parents: The Parenting Science Insights Podcast · #69</p>
+        <p class="podcast-title">J. Stuart Ablon, Ph.D: Rethinking Discipline — Better Ways Than Punishment</p>
+        <div class="podcast-tags"><span class="podcast-tag">Parenting</span><span class="podcast-tag">Discipline</span><span class="podcast-tag">Child Psychology</span><span class="podcast-tag">Behaviour</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/j-stuart-ablon-ph-d-rethinking-discipline-better-ways-than-punishment-raising-parents-69/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/j-stuart-ablon-ph-d-rethinking-discipline-better-ways/id1648316813?i=1000682463344" target="_blank">🎧 Apple Podcasts</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast family health wellness">
+        <p class="podcast-show">All Together: The Family Science Insights Podcast · #69</p>
+        <p class="podcast-title">Jennifer Gerlach: Family Dynamics and Caregiving With Mental Health</p>
+        <div class="podcast-tags"><span class="podcast-tag">Family</span><span class="podcast-tag">Mental Health</span><span class="podcast-tag">Caregiving</span><span class="podcast-tag">Wellbeing</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/jennifer-gerlach-family-dynamics-and-caregiving-with-mental-health-all-together-69/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/jennifer-gerlach-family-dynamics-and-caregiving/id1648226863?i=1000682463248" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=eoe1dBZxqeM" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast home lifestyle safety">
+        <p class="podcast-show">On the House: The Household Management Science Insights Podcast · #69</p>
+        <p class="podcast-title">John Carlsen: Safe &amp; Sound — A Guide to Household Security</p>
+        <div class="podcast-tags"><span class="podcast-tag">Home</span><span class="podcast-tag">Security</span><span class="podcast-tag">Household Management</span><span class="podcast-tag">Safety</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/john-carlsen-safe-sound-a-guide-to-household-security-on-the-house-69/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/john-carlsen-safe-sound-a-guide-to-household/id1648508806?i=1000682472033" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=DpX7B_fNT9I" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast home lifestyle design">
+        <p class="podcast-show">Room by Room: The Home Organization Science Insights Podcast · #69</p>
+        <p class="podcast-title">Dr. Hing-Wah Chau: The Influence of Housing Style on Home Atmosphere</p>
+        <div class="podcast-tags"><span class="podcast-tag">Home Design</span><span class="podcast-tag">Architecture</span><span class="podcast-tag">Interior</span><span class="podcast-tag">Lifestyle</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/dr-hing-wah-chau-the-influence-of-housing-style-on-home-atmosphere-room-by-room-69/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/dr-hing-wah-chau-the-influence-of-housing-style-on/id1648509192?i=1000682467370" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=p9pZolRgU3s" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast home lifestyle sustainability">
+        <p class="podcast-show">Room by Room: The Home Organization Science Insights Podcast · #68</p>
+        <p class="podcast-title">Dr. Nicola Willand: Green Home Design — Integrating Sustainable Practices</p>
+        <div class="podcast-tags"><span class="podcast-tag">Sustainability</span><span class="podcast-tag">Green Design</span><span class="podcast-tag">Home</span><span class="podcast-tag">Environment</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/dr-nicola-willand-green-home-design-integrating-sustainable-practices-room-by-room-68/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/dr-nicola-willand-green-home-design-integrating-sustainable/id1648509192?i=1000681038543" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=TtApz69tYhE" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast career wellness productivity">
+        <p class="podcast-show">Work in Progress: The Personal Productivity Science Insights Podcast · #68</p>
+        <p class="podcast-title">Max Reisner: Negotiation Success — Using Behavioral Insights to Reduce Stress</p>
+        <div class="podcast-tags"><span class="podcast-tag">Negotiation</span><span class="podcast-tag">Productivity</span><span class="podcast-tag">Behavioural Science</span><span class="podcast-tag">Career</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/max-reisner-negotiation-success-using-behavioral-insights-to-reduce-stress-work-in-progress-68/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/max-reisner-negotiation-success-using-behavioral-insights/id1648510051?i=1000681039048" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=GkR1GbxvgTg" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness health psychology">
+        <p class="podcast-show">Doing Well: The Wellbeing Science Insights Podcast · #68</p>
+        <p class="podcast-title">Mylira Green: Overcoming Self-Criticism for Positive Growth</p>
+        <div class="podcast-tags"><span class="podcast-tag">Wellbeing</span><span class="podcast-tag">Self-Development</span><span class="podcast-tag">Psychology</span><span class="podcast-tag">Mental Health</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/mylira-green-overcoming-the-self-criticism-for-positive-growth-doing-well-68/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/mylira-green-overcoming-the-self-criticism-for/id1648515329?i=1000681038845" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=pcMhFPrNZVg" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness happiness psychology">
+        <p class="podcast-show">Sero Boost: The Happiness Science Insights Podcast · #68</p>
+        <p class="podcast-title">Allison Broennimann, Ph.D.: Embracing Resentment for Personal Growth</p>
+        <div class="podcast-tags"><span class="podcast-tag">Happiness</span><span class="podcast-tag">Psychology</span><span class="podcast-tag">Resilience</span><span class="podcast-tag">Personal Growth</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/allison-broennimann-ph-d-embracing-resentment-for-personal-growth-sero-boost-68/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/allison-broennimann-ph-d-embracing-resentment-for-personal/id1648514660?i=1000681038839" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=JoeIhbKESdc" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness health psychology">
+        <p class="podcast-show">Bouncing Back: The Personal Resilience Science Insights Podcast · #68</p>
+        <p class="podcast-title">Dr. Lin Hong-hui: Reclaiming Attachment Security After Traumatic Relationships</p>
+        <div class="podcast-tags"><span class="podcast-tag">Resilience</span><span class="podcast-tag">Trauma</span><span class="podcast-tag">Attachment</span><span class="podcast-tag">Mental Health</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/dr-lin-hong-hui-reclaiming-attachment-security-after-traumatic-relationships-bouncing-back-68/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/dr-lin-hong-hui-reclaiming-attachment-security-after/id1649518468?i=1000681038419" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=UQChIkXZ6f" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast home lifestyle sustainability">
+        <p class="podcast-show">On the House: The Household Management Science Insights Podcast · #65</p>
+        <p class="podcast-title">Cees Engelen: Water Management — Sustainable Practices for Household</p>
+        <div class="podcast-tags"><span class="podcast-tag">Home</span><span class="podcast-tag">Sustainability</span><span class="podcast-tag">Water</span><span class="podcast-tag">Environment</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/cees-engelen-water-management-sustainable-practices-for-household-on-the-house-65/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/cees-engelen-water-management-sustainable-practices/id1648508806?i=1000676137871" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=lXl1e_3OdEk" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast home lifestyle wellness">
+        <p class="podcast-show">Room by Room: The Home Organization Science Insights Podcast · #65</p>
+        <p class="podcast-title">Aanchal Kejriwal: Identifying Approaches and Priorities for Bedroom Organization</p>
+        <div class="podcast-tags"><span class="podcast-tag">Home Organization</span><span class="podcast-tag">Interior Design</span><span class="podcast-tag">Lifestyle</span><span class="podcast-tag">Wellbeing</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/aanchal-kejriwal-identifying-approaches-and-priorities-for-bedroom-organization-room-by-room-65/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/aanchal-kejriwal-identifying-approaches-and/id1648509192?i=1000676146937" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=cBarHaLVcKk" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast career wellness productivity">
+        <p class="podcast-show">Work in Progress: The Personal Productivity Science Insights Podcast · #63</p>
+        <p class="podcast-title">Vicki Soar, Art Psychotherapist: Unlocking Creativity for Productivity</p>
+        <div class="podcast-tags"><span class="podcast-tag">Creativity</span><span class="podcast-tag">Productivity</span><span class="podcast-tag">Art Therapy</span><span class="podcast-tag">Career</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/vicki-soar-art-psychotherapist-unlocking-creativity-for-productivity-work-in-progress-63/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/vicky-soar-art-psychotherapist-unlocking-creativity/id1648510051?i=1000672636619" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=Pbr84xrfZFw" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness parenting family">
+        <p class="podcast-show">Bouncing Back: The Personal Resilience Science Insights Podcast · #63</p>
+        <p class="podcast-title">Dr. Justin Coulson: Purposeful Parenthood — Nurturing Resilient Families</p>
+        <div class="podcast-tags"><span class="podcast-tag">Parenting</span><span class="podcast-tag">Resilience</span><span class="podcast-tag">Family</span><span class="podcast-tag">Child Development</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/dr-justin-coulson-purposeful-parenthood-nurturing-resilient-families-bouncing-back-63/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/dr-justin-coulson-purposeful-parenthood-nurturing-resilient/id1649518468?i=1000672637694" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=pUUEHm7Tz5g" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness education health">
+        <p class="podcast-show">Doing Well: The Wellbeing Science Insights Podcast · #63</p>
+        <p class="podcast-title">Carlin Lee: Fostering a Love of Learning in Education — Methods and Implications</p>
+        <div class="podcast-tags"><span class="podcast-tag">Education</span><span class="podcast-tag">Wellbeing</span><span class="podcast-tag">Learning</span><span class="podcast-tag">Psychology</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/carlin-lee-fostering-a-love-of-learning-in-education-methods-and-implications-doing-well-63/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/carlin-lee-fostering-a-love-of-learning-in/id1648515329?i=1000672635994" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=bHAtWdF0TY0" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast home lifestyle sustainability">
+        <p class="podcast-show">On the House: The Household Management Science Insights Podcast · #57</p>
+        <p class="podcast-title">Karen Magruder: Community Roots — Fostering Eco-friendly Communities</p>
+        <div class="podcast-tags"><span class="podcast-tag">Community</span><span class="podcast-tag">Sustainability</span><span class="podcast-tag">Home</span><span class="podcast-tag">Environment</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/karen-magruder-community-roots-fostering-eco-friendly-communities-on-the-house-57/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/karen-magruder-community-roots-fostering-eco-friendly/id1648508806?i=1000662688451" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=vHBj1KqrnwQ" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast parenting wellness health">
+        <p class="podcast-show">Raising Parents: The Parenting Science Insights Podcast · #57</p>
+        <p class="podcast-title">Iris Lesser, Ph.D.: Postpartum Diversity — Beyond Stigma to Wellness</p>
+        <div class="podcast-tags"><span class="podcast-tag">Parenting</span><span class="podcast-tag">Postpartum</span><span class="podcast-tag">Mental Health</span><span class="podcast-tag">Wellness</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/iris-lesser-ph-d-postpartum-diversity-beyond-stigma-to-wellness-raising-parents-57/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/iris-lesser-ph-d-postpartum-diversity-beyond-stigma/id1648316813?i=1000662696408" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=aL5dqgPEEds" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast family wellness">
+        <p class="podcast-show">All Together: The Family Science Insights Podcast · #57</p>
+        <p class="podcast-title">Constance Scharff, Ph.D.: The Role of Storytelling in Enhancing Family Dynamics</p>
+        <div class="podcast-tags"><span class="podcast-tag">Family</span><span class="podcast-tag">Storytelling</span><span class="podcast-tag">Communication</span><span class="podcast-tag">Psychology</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/constance-scharff-ph-d-the-role-of-storytelling-in-enhancing-family-dynamics-all-together-57/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/constance-scharff-ph-d-the-role-of-storytelling/id1648226863?i=1000662691813" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=F4K3W8V7dl4" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast parenting health wellness nutrition">
+        <p class="podcast-show">Raising Parents: The Parenting Science Insights Podcast · #54</p>
+        <p class="podcast-title">Dr. Lina Begdache: Junk-Free Kids — Health Impacts of Poor Diets</p>
+        <div class="podcast-tags"><span class="podcast-tag">Parenting</span><span class="podcast-tag">Nutrition</span><span class="podcast-tag">Child Health</span><span class="podcast-tag">Wellness</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/dr-lina-begdache-junk-free-kids-health-impacts-of-poor-diets-raising-parents-54/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/dr-lina-begdache-junk-free-kids-health-impacts-of/id1648316813?i=1000658120838" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=BoHkMNz0wR0" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness happiness health">
+        <p class="podcast-show">Sero Boost: The Happiness Science Insights Podcast · #54</p>
+        <p class="podcast-title">Dr. Adrienne Sudbury: Charity's Impact on Life Satisfaction</p>
+        <div class="podcast-tags"><span class="podcast-tag">Happiness</span><span class="podcast-tag">Charity</span><span class="podcast-tag">Life Satisfaction</span><span class="podcast-tag">Wellbeing</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/dr-adrienne-sudbury-charitys-impact-on-life-satisfaction-sero-boost-54/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/dr-adrienne-sudbury-charitys-impact-on-life-satisfaction/id1648514660?i=1000658105507" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=CUMJg_09f8Q" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast home lifestyle design">
+        <p class="podcast-show">Room by Room: The Home Organization Science Insights Podcast · #54</p>
+        <p class="podcast-title">Emily Bihl: Expressing Style — The Art of Home Decoration</p>
+        <div class="podcast-tags"><span class="podcast-tag">Interior Design</span><span class="podcast-tag">Home Decor</span><span class="podcast-tag">Lifestyle</span><span class="podcast-tag">Style</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/emily-bihl-expressing-style-the-art-of-home-decoration-room-by-room-54/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/emily-bihl-expressing-style-the-art-of-home/id1648509192?i=1000658123534" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=HAPd4fPEDDw" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast home sustainability tech">
+        <p class="podcast-show">On the House: The Household Management Science Insights Podcast · #54</p>
+        <p class="podcast-title">Professor Wasim Saman: Maximize Savings and Comfort with Home Solar</p>
+        <div class="podcast-tags"><span class="podcast-tag">Solar Energy</span><span class="podcast-tag">Sustainability</span><span class="podcast-tag">Home</span><span class="podcast-tag">Finance</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/professor-wasim-saman-maximize-savings-and-comfort-with-home-solar-on-the-house-54/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/professor-wasim-saman-maximize-savings-and-comfort/id1648508806?i=1000658100618" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=eVzqI69Y0Z4" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness tech career">
+        <p class="podcast-show">Self-Improvement Atlas: The Personal Science Insights Podcast · #54</p>
+        <p class="podcast-title">Stephanie Drawdy, Esq: Art x AI — Discover Yourself in Digital Colours</p>
+        <div class="podcast-tags"><span class="podcast-tag">AI</span><span class="podcast-tag">Art</span><span class="podcast-tag">Self-Discovery</span><span class="podcast-tag">Tech</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/stephanie-drawdy-esq-art-x-ai-discover-yourself-in-digital-colours-self-improvement-atlas-54/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/stephanie-drawdy-art-x-ai-discover-yourself-in-digital/id1648239031?i=1000658119950" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=tz_RPWH05zw" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness health psychology">
+        <p class="podcast-show">Bouncing Back: The Personal Resilience Science Insights Podcast · #54</p>
+        <p class="podcast-title">Lakshmi Ramachandran: Thriving Through Life's Challenges for Better Resilience</p>
+        <div class="podcast-tags"><span class="podcast-tag">Resilience</span><span class="podcast-tag">Wellbeing</span><span class="podcast-tag">Personal Growth</span><span class="podcast-tag">Psychology</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/lakshmi-ramachandran-thriving-through-lifes-challenges-for-better-resilience-bouncing-back-54/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/dr-lakshmi-ramachandran-thriving-through-challenges/id1649518468?i=1000658174085" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=2Z2b3GLkwLc" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness relationships health">
+        <p class="podcast-show">Reloscope: The Relationship Science Insights Podcast · #54</p>
+        <p class="podcast-title">Pauline Ryeland: How Physical Affection Strengthens Emotional Bonds</p>
+        <div class="podcast-tags"><span class="podcast-tag">Relationships</span><span class="podcast-tag">Emotional Wellbeing</span><span class="podcast-tag">Intimacy</span><span class="podcast-tag">Psychology</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/pauline-ryeland-how-physical-affection-strengthens-emotional-bonds-reloscope-54/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/pauline-ryeland-how-physical-affection-strengthens/id1648297613?i=1000658120152" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=CwWmzqNd9GA" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast family health parenting wellness">
+        <p class="podcast-show">All Together: The Family Science Insights Podcast · #54</p>
+        <p class="podcast-title">Melissa Orlov: ADHD in Parents — Fostering a Supportive Family Environment</p>
+        <div class="podcast-tags"><span class="podcast-tag">Family</span><span class="podcast-tag">ADHD</span><span class="podcast-tag">Parenting</span><span class="podcast-tag">Mental Health</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/melissa-orlov-adhd-in-parents-fostering-a-supportive-family-environment-all-together-54/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/melissa-orlov-adhd-in-parents-fostering-a/id1648226863?i=1000658118460" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=hOSEWdrfHTM" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast home health sustainability">
+        <p class="podcast-show">On the House: The Household Management Science Insights Podcast · #51</p>
+        <p class="podcast-title">Professor Oliver A.H. Jones: Environmental Factors for Healthier Homes</p>
+        <div class="podcast-tags"><span class="podcast-tag">Home</span><span class="podcast-tag">Environment</span><span class="podcast-tag">Health</span><span class="podcast-tag">Household Management</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/professor-oliver-a-h-jones-environmental-factors-for-healthier-homes-on-the-house-51/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/professor-oliver-a-h-jones-environmental-factors/id1648508806?i=1000653624509" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=iLbazZifbGk" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast career wellness">
+        <p class="podcast-show">Self-Improvement Atlas: The Personal Science Insights Podcast · #51</p>
+        <p class="podcast-title">Utkarsh Narang: A Purposeful Journey to Meaningful Careers</p>
+        <div class="podcast-tags"><span class="podcast-tag">Career</span><span class="podcast-tag">Purpose</span><span class="podcast-tag">Self-Development</span><span class="podcast-tag">Productivity</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/utkarsh-narang-a-purposeful-journey-to-meaningful-careers-self-improvement-atlas-51/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/utkarsh-narang-finding-meaningful-work-a-journey/id1648239031?i=1000653617185" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=mSwc8fPXhvo" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness relationships psychology">
+        <p class="podcast-show">Reloscope: The Relationship Science Insights Podcast · #51</p>
+        <p class="podcast-title">Dr. Ada Gonzalez: The Importance of Learning and Growth After a Breakup</p>
+        <div class="podcast-tags"><span class="podcast-tag">Relationships</span><span class="podcast-tag">Personal Growth</span><span class="podcast-tag">Psychology</span><span class="podcast-tag">Resilience</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/dr-ada-gonzalez-the-importance-of-learning-and-growth-after-a-breakup-reloscope-51/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/dr-ada-gonzalez-the-importance-of-learning-and/id1648297613?i=1000653618228" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=bL3V5kC6BYY" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast parenting health wellness">
+        <p class="podcast-show">Raising Parents: The Parenting Science Insights Podcast · #51</p>
+        <p class="podcast-title">Devanshi J. Patel: Fit Families, Thriving Kids — Tackling Childhood Obesity</p>
+        <div class="podcast-tags"><span class="podcast-tag">Parenting</span><span class="podcast-tag">Child Health</span><span class="podcast-tag">Nutrition</span><span class="podcast-tag">Fitness</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/devanshi-j-patel-fit-families-thriving-kids-tackling-childhood-obesity-raising-parents-51/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/devanshi-j-patel-fit-families-thriving-kids-tackling/id1648316813?i=1000653642323" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=vM6l_8yekmo" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast family health wellness">
+        <p class="podcast-show">All Together: The Family Science Insights Podcast · #51</p>
+        <p class="podcast-title">Sarah Roberts: Compassionate Support — Navigating Infertility Treatment Together</p>
+        <div class="podcast-tags"><span class="podcast-tag">Family</span><span class="podcast-tag">Infertility</span><span class="podcast-tag">Mental Health</span><span class="podcast-tag">Relationships</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/sarah-roberts-compassionate-support-navigating-infertility-treatment-together-all-together-51/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/sarah-roberts-compassionate-support-navigating-infertility/id1648226863?i=1000653624480" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=QbUl3AH8Smg" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness health psychology">
+        <p class="podcast-show">Doing Well: The Wellbeing Science Insights Podcast · #50</p>
+        <p class="podcast-title">Marie McLeod: The Neuroscience of Personal Growth</p>
+        <div class="podcast-tags"><span class="podcast-tag">Neuroscience</span><span class="podcast-tag">Personal Growth</span><span class="podcast-tag">Wellbeing</span><span class="podcast-tag">Psychology</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/marie-mcleod-the-neuroscience-of-personal-growth-doing-well-50/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/marie-mcleod-the-neuroscience-of-personal-growth/id1648515329?i=1000652187396" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=vuYZDhTZOE8" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness happiness health">
+        <p class="podcast-show">Sero Boost: The Happiness Science Insights Podcast · #50</p>
+        <p class="podcast-title">Matthew Cahill: From Self-Acceptance to Belonging — Exploring the Path to Happiness</p>
+        <div class="podcast-tags"><span class="podcast-tag">Happiness</span><span class="podcast-tag">Self-Acceptance</span><span class="podcast-tag">Belonging</span><span class="podcast-tag">Psychology</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/matthew-cahill-from-self-acceptance-to-belonging-exploring-the-path-to-happiness-sero-boost-50/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/matthew-cahill-from-self-acceptance-to-belonging-exploring/id1648514660?i=1000651504115" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=36VaqbpPSmo" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast home sustainability lifestyle">
+        <p class="podcast-show">Room by Room: The Home Organization Science Insights Podcast · #50</p>
+        <p class="podcast-title">Anna Perramon: Eco-Friendly Materials and Sustainable Construction Systems</p>
+        <div class="podcast-tags"><span class="podcast-tag">Sustainability</span><span class="podcast-tag">Construction</span><span class="podcast-tag">Home Design</span><span class="podcast-tag">Environment</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/anna-perramon-eco-friendly-materials-and-sustainable-construction-systems-room-by-room-50/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/anna-perramon-eco-friendly-materials-and-sustainable/id1648509192?i=1000652200478" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=gdd8JRw6J30" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast career wellness productivity">
+        <p class="podcast-show">Work in Progress: The Personal Productivity Science Insights Podcast · #50</p>
+        <p class="podcast-title">Tiara Imani Blain, MA: Stress Management for Peak Personal Performance</p>
+        <div class="podcast-tags"><span class="podcast-tag">Stress Management</span><span class="podcast-tag">Productivity</span><span class="podcast-tag">Career</span><span class="podcast-tag">Performance</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/tiara-imani-blain-ma-stress-management-for-peak-personal-performance-work-in-progress-50/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/tiara-imani-blain-ma-stress-management-for-peak-personal/id1648510051?i=1000651474985" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=rJhnV5cp1fQ" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness health psychology">
+        <p class="podcast-show">Bouncing Back: The Personal Resilience Science Insights Podcast · #50</p>
+        <p class="podcast-title">Dr. Foojan Zeine: Building Resilience Through Prosocial Acts</p>
+        <div class="podcast-tags"><span class="podcast-tag">Resilience</span><span class="podcast-tag">Community</span><span class="podcast-tag">Psychology</span><span class="podcast-tag">Wellbeing</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/dr-foojan-zeine-building-resilience-through-prosocial-acts-bouncing-back-50/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/dr-foojan-zeine-building-resilience-through-prosocial/id1649518468?i=1000651490112" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=ARPnx6DsSlQ" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness relationships">
+        <p class="podcast-show">Reloscope: The Relationship Science Insights Podcast · #47</p>
+        <p class="podcast-title">Kristen Qualls: The Role of Daily Habits — Fostering Romance and Passion in Couples</p>
+        <div class="podcast-tags"><span class="podcast-tag">Relationships</span><span class="podcast-tag">Habits</span><span class="podcast-tag">Romance</span><span class="podcast-tag">Psychology</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/kristen-qualls-the-role-of-daily-habits-fostering-romance-and-passion-in-couples-reloscope-47/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/kristen-qualls-the-role-of-daily-habits/id1648297613?i=1000647615135" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=LRKl4ie-uTc" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast family health wellness">
+        <p class="podcast-show">All Together: The Family Science Insights Podcast · #47</p>
+        <p class="podcast-title">Hui Wen Tong: Families Under Fire — Unveiling Domestic Violence</p>
+        <div class="podcast-tags"><span class="podcast-tag">Family</span><span class="podcast-tag">Domestic Violence</span><span class="podcast-tag">Mental Health</span><span class="podcast-tag">Society</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/hui-wen-tong-families-under-fire-unveiling-domestic-violence-all-together-47/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/hui-wen-tong-families-under-fire-unveiling-domestic/id1648226863?i=1000647614151" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=L5jA7dpWVzQ" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast parenting wellness psychology">
+        <p class="podcast-show">Raising Parents: The Parenting Science Insights Podcast · #47</p>
+        <p class="podcast-title">Dr. Kate Renshaw: Anchoring Love — Nurturing Secure Attachments</p>
+        <div class="podcast-tags"><span class="podcast-tag">Parenting</span><span class="podcast-tag">Attachment</span><span class="podcast-tag">Child Development</span><span class="podcast-tag">Psychology</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/dr-kate-renshaw-anchoring-love-nurturing-secure-attachments-raising-parents-47/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/dr-kate-renshaw-anchoring-love-nurturing-secure-attachments/id1648316813?i=1000647622784" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=WTqqCto4zg4" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness career culture">
+        <p class="podcast-show">Self-Improvement Atlas: The Personal Science Insights Podcast · #47</p>
+        <p class="podcast-title">Victoria Shaw, AAA: Collecting Art For A Connected Community</p>
+        <div class="podcast-tags"><span class="podcast-tag">Art</span><span class="podcast-tag">Community</span><span class="podcast-tag">Self-Development</span><span class="podcast-tag">Culture</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/victoria-shaw-aaa-collecting-art-for-a-connected-community-self-improvement-atlas-47/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/victoria-shaw-aaa-collecting-art-for-a-connected/id1648239031?i=1000647633453" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=7C-la-EMM_Q" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast home sustainability lifestyle">
+        <p class="podcast-show">On the House: The Household Management Science Insights Podcast · #47</p>
+        <p class="podcast-title">Denny Gunawan: Eco-Friendly House — Energy Saving, Recycle &amp; Green Spaces</p>
+        <div class="podcast-tags"><span class="podcast-tag">Sustainability</span><span class="podcast-tag">Eco-Friendly</span><span class="podcast-tag">Home</span><span class="podcast-tag">Environment</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/denny-gunawan-eco-friendly-house-energy-saving-recycle-green-spaces-on-the-house-47/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/denny-gunawan-eco-friendly-house-energy-saving-recycle/id1648508806?i=1000647618075" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=CvnO5q6ZORQ" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness health psychology">
+        <p class="podcast-show">Doing Well: The Wellbeing Science Insights Podcast · #46</p>
+        <p class="podcast-title">Dr. Gregg Henriques: CALM-MO — An Integrative Approach to Mindfulness</p>
+        <div class="podcast-tags"><span class="podcast-tag">Mindfulness</span><span class="podcast-tag">Wellbeing</span><span class="podcast-tag">Psychology</span><span class="podcast-tag">Mental Health</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/dr-gregg-henriques-calm-mo-an-integrative-approach-to-mindfulness-doing-well-46/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/dr-gregg-henriques-calm-mo-an-integrative-approach/id1648515329?i=1000645539938" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=N_EWtbhuX1U" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness happiness health">
+        <p class="podcast-show">Sero Boost: The Happiness Science Insights Podcast · #46</p>
+        <p class="podcast-title">Dr. Andrea Mata: Exploring Loneliness Across Different Life Stages</p>
+        <div class="podcast-tags"><span class="podcast-tag">Happiness</span><span class="podcast-tag">Loneliness</span><span class="podcast-tag">Mental Health</span><span class="podcast-tag">Psychology</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/dr-andrea-mata-exploring-loneliness-across-different-life-stages-sero-boost-46/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/dr-andrea-mata-exploring-loneliness-across-different/id1648514660?i=1000645536224" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=nNTjX0osnAk" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness health">
+        <p class="podcast-show">Bouncing Back: The Personal Resilience Science Insights Podcast · #46</p>
+        <p class="podcast-title">Pete Donnelly: Wheelchair Training — Unlocking an Inaccessible World</p>
+        <div class="podcast-tags"><span class="podcast-tag">Resilience</span><span class="podcast-tag">Disability</span><span class="podcast-tag">Accessibility</span><span class="podcast-tag">Wellbeing</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/pete-donnelly-wheelchair-training-unlocking-an-inaccessible-world-bouncing-back-46/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/pete-donnelly-wheelchair-training-unlocking-possibilities/id1649518468?i=1000645542667" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=_74N40rbcZQ" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast career productivity wellness">
+        <p class="podcast-show">Work in Progress: The Personal Productivity Science Insights Podcast · #46</p>
+        <p class="podcast-title">Vi-An Nguyen: Balancing Stress &amp; Achievement for Better Productivity</p>
+        <div class="podcast-tags"><span class="podcast-tag">Stress</span><span class="podcast-tag">Productivity</span><span class="podcast-tag">Career</span><span class="podcast-tag">Wellbeing</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/vi-an-nguyen-balancing-stress-achievement-for-better-productivity-work-in-progress-46/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/vi-an-nguyen-balancing-stress-achievement-for-better/id1648510051?i=1000645541503" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=J9ESj8CkYco" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast home lifestyle">
+        <p class="podcast-show">Room by Room: The Home Organization Science Insights Podcast · #46</p>
+        <p class="podcast-title">Laura McHolm: Mastering the Art of Relocation from Preparation to Settling Down</p>
+        <div class="podcast-tags"><span class="podcast-tag">Relocation</span><span class="podcast-tag">Home Organization</span><span class="podcast-tag">Lifestyle</span><span class="podcast-tag">Moving</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/laura-mcholm-mastering-the-art-of-relocation-from-preparation-to-settling-down-room-by-room-46/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/laura-mcholm-mastering-the-art-of-relocation/id1648509192?i=1000645512332" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=rnwrPUD1JO8" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness culture career">
+        <p class="podcast-show">Self-Improvement Atlas: The Personal Science Insights Podcast · #41</p>
+        <p class="podcast-title">Steph Bursill: Art's Impact on Identity — Shaping Who We Are</p>
+        <div class="podcast-tags"><span class="podcast-tag">Identity</span><span class="podcast-tag">Art</span><span class="podcast-tag">Self-Development</span><span class="podcast-tag">Culture</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/steph-bursill-arts-impact-on-identity-shaping-who-we-are-self-improvement-atlas-41/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/steph-bursill-arts-impact-on-identity-shaping-who-we/id1648239031?i=1000637850546" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=1U0thVIG7B0" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness relationships psychology">
+        <p class="podcast-show">Reloscope: The Relationship Science Insights Podcast · #41</p>
+        <p class="podcast-title">Julie Griffin, PsyD: Psychology and Neurology of Couple Routines</p>
+        <div class="podcast-tags"><span class="podcast-tag">Relationships</span><span class="podcast-tag">Neuroscience</span><span class="podcast-tag">Psychology</span><span class="podcast-tag">Habits</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/julie-griffin-psyd-psychology-and-neurology-of-couple-routines-reloscope-41/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/julie-griffin-psyd-the-science-of-routine/id1648297613?i=1000637874908" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=4tKWR2yQ4pk" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast family wellness culture">
+        <p class="podcast-show">All Together: The Family Science Insights Podcast · #41</p>
+        <p class="podcast-title">Su Mei Tan, AThR: Enhancing Family Communication Through Art Therapy</p>
+        <div class="podcast-tags"><span class="podcast-tag">Family</span><span class="podcast-tag">Art Therapy</span><span class="podcast-tag">Communication</span><span class="podcast-tag">Wellbeing</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/su-mei-tan-athr-enhancing-family-communication-through-art-therapy-all-together-41/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/su-mei-tan-athr-enhancing-family-communication-through/id1648226863?i=1000637909245" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=oBfqYd-_qBU" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast career health wellness">
+        <p class="podcast-show">Work in Progress: The Personal Productivity Science Insights Podcast · #40</p>
+        <p class="podcast-title">Chris Burres: Unveiling the Impact of Antioxidants on Sleep and Productivity</p>
+        <div class="podcast-tags"><span class="podcast-tag">Productivity</span><span class="podcast-tag">Sleep</span><span class="podcast-tag">Nutrition</span><span class="podcast-tag">Health</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/chris-burres-unveiling-the-impact-of-antioxidants-on-sleep-and-productivity-work-in-progress-40/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/chris-burres-unveiling-the-impact-of-antioxidants/id1648510051?i=1000636384419" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=HrUwvU1CrYo" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast parenting health wellness">
+        <p class="podcast-show">Raising Parents: The Parenting Science Insights Podcast · #40</p>
+        <p class="podcast-title">Dr. Amelia N.Y. Lee, MH: Secure Attachment and Child Development</p>
+        <div class="podcast-tags"><span class="podcast-tag">Parenting</span><span class="podcast-tag">Attachment</span><span class="podcast-tag">Child Development</span><span class="podcast-tag">Psychology</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/dr-amelia-n-y-lee-mh-secure-attachment-and-child-development-raising-parents-40/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/dr-amelia-n-y-lee-mh-secure-attachment-and-child/id1648316813?i=1000636390865" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=CZNyzUrfids" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast home lifestyle career">
+        <p class="podcast-show">On the House: The Household Management Science Insights Podcast · #40</p>
+        <p class="podcast-title">Dr. Jennifer Huang: Household Budgeting for Achieving Financial Success</p>
+        <div class="podcast-tags"><span class="podcast-tag">Budgeting</span><span class="podcast-tag">Finance</span><span class="podcast-tag">Household Management</span><span class="podcast-tag">Lifestyle</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/dr-jennifer-huang-household-budgeting-for-achieving-financial-success-on-the-house-40/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/dr-jennifer-huang-household-budgeting-for-achieving/id1648508806?i=1000636383137" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=UJk7_lMWI1Y" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness education health">
+        <p class="podcast-show">Doing Well: The Wellbeing Science Insights Podcast · #40</p>
+        <p class="podcast-title">Ning Xin CHONG: The Power of Curiosity to Promote Well-being in Education</p>
+        <div class="podcast-tags"><span class="podcast-tag">Education</span><span class="podcast-tag">Curiosity</span><span class="podcast-tag">Wellbeing</span><span class="podcast-tag">Learning</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/ning-xin-chong-the-power-of-curiosity-to-promote-well-being-in-education-doing-well-40/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/ning-xing-chong-the-power-of-curiosity-to-promote/id1648515329?i=1000636386756" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=hoEyoxYYmU8" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness happiness psychology">
+        <p class="podcast-show">Sero Boost: The Happiness Science Insights Podcast · #40</p>
+        <p class="podcast-title">Emily P.G. Erickson: The Paradox of Positivity — Balancing Support &amp; Emotions</p>
+        <div class="podcast-tags"><span class="podcast-tag">Happiness</span><span class="podcast-tag">Positivity</span><span class="podcast-tag">Emotions</span><span class="podcast-tag">Psychology</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/emily-p-g-erickson-the-paradox-of-positivity-balancing-support-emotions-sero-boost-40/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/emily-p-g-erickson-the-paradox-of-positivity/id1648514660?i=1000636388480" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=v87y_04e3x0" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness health psychology">
+        <p class="podcast-show">Bouncing Back: The Personal Resilience Science Insights Podcast · #40</p>
+        <p class="podcast-title">Silvia Violante: Trauma and Addiction — Trauma's Impact on Substance Abuse</p>
+        <div class="podcast-tags"><span class="podcast-tag">Resilience</span><span class="podcast-tag">Trauma</span><span class="podcast-tag">Addiction</span><span class="podcast-tag">Mental Health</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/silvia-violante-trauma-and-addiction-traumas-impact-on-substance-abuse-bouncing-back-40/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/silvia-violante-trauma-and-addiction-traumas-impact/id1649518468?i=1000636387086" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=lqZxQVIataw" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast home lifestyle design">
+        <p class="podcast-show">Room by Room: The Home Organization Science Insights Podcast · #40</p>
+        <p class="podcast-title">Tarek Moubayed: Navigating Housing Styles for Your Dream Home</p>
+        <div class="podcast-tags"><span class="podcast-tag">Home Design</span><span class="podcast-tag">Architecture</span><span class="podcast-tag">Interior</span><span class="podcast-tag">Lifestyle</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/tarek-moubayed-navigating-housing-styles-for-your-dream-home-room-by-room-40/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/tarek-moubayed-navigating-housing-styles-for-your-dream/id1648509192?i=1000636382530" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=WM1Xm64-R5U" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness culture lifestyle">
+        <p class="podcast-show">Self-Improvement Atlas: The Personal Science Insights Podcast · #35</p>
+        <p class="podcast-title">Mya Le: How Clothing Affects Our Mood and Confidence</p>
+        <div class="podcast-tags"><span class="podcast-tag">Fashion</span><span class="podcast-tag">Psychology</span><span class="podcast-tag">Confidence</span><span class="podcast-tag">Lifestyle</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/mya-le-how-clothing-affects-our-mood-and-confidence-self-improvement-atlas-35/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/mya-le-how-clothing-affects-our-mood-and-confidence/id1648239031?i=1000627957176" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=nBLnESB4-3I" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness relationships health">
+        <p class="podcast-show">Reloscope: The Relationship Science Insights Podcast · #37</p>
+        <p class="podcast-title">Rebeca Islam: Revive Your Love — Reigniting the Spark in a Dying Relationship</p>
+        <div class="podcast-tags"><span class="podcast-tag">Relationships</span><span class="podcast-tag">Romance</span><span class="podcast-tag">Psychology</span><span class="podcast-tag">Wellbeing</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/rebeca-islam-revive-your-love-reigniting-the-spark-in-a-dying-relationship-reloscope-37/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/rebeca-islam-revive-your-love-reigniting-the-spark-in/id1648297613?i=1000631161727" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=rTSp-GS0m1Y" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast family wellness">
+        <p class="podcast-show">All Together: The Family Science Insights Podcast · #37</p>
+        <p class="podcast-title">Ron Deal, LMFT, LPC: Navigating Remarriage Challenges in Blended Families</p>
+        <div class="podcast-tags"><span class="podcast-tag">Family</span><span class="podcast-tag">Remarriage</span><span class="podcast-tag">Blended Families</span><span class="podcast-tag">Psychology</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/ron-deal-lmft-lpc-navigating-remarriage-challenges-in-blended-families-all-together-37/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/ron-deal-lmft-lpc-blending-families-with-love/id1648226863?i=1000631169265" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=QRt8RkLNWug" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness lifestyle">
+        <p class="podcast-show">Self-Improvement Atlas: The Personal Science Insights Podcast · #37</p>
+        <p class="podcast-title">Melanie Scott: Developing Patience and Empathy Through Pet Training</p>
+        <div class="podcast-tags"><span class="podcast-tag">Self-Development</span><span class="podcast-tag">Empathy</span><span class="podcast-tag">Patience</span><span class="podcast-tag">Lifestyle</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/melanie-scott-developing-patience-and-empathy-through-pet-training-self-improvement-atlas-37/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/melanie-scott-developing-patience-and-empathy-through/id1648239031?i=1000631161607" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=cHe5khRyA9I" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast career wellness productivity">
+        <p class="podcast-show">Work in Progress: The Personal Productivity Science Insights Podcast · #36</p>
+        <p class="podcast-title">Beatriz Pereira: Smart Shopping and Budgeting for Financial Productivity</p>
+        <div class="podcast-tags"><span class="podcast-tag">Finance</span><span class="podcast-tag">Productivity</span><span class="podcast-tag">Budgeting</span><span class="podcast-tag">Career</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/beatriz-pereira-smart-shopping-and-budgeting-for-financial-productivity-work-in-progress-36/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/beatriz-pereira-smart-shopping-and-budget-management/id1648510051?i=1000629567658" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=RvUaOnyR13U" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast home sustainability lifestyle">
+        <p class="podcast-show">On the House: The Household Management Science Insights Podcast · #36</p>
+        <p class="podcast-title">Casey Markle: Uniting Homeowners and Land Trusts Through Conservation Easements</p>
+        <div class="podcast-tags"><span class="podcast-tag">Conservation</span><span class="podcast-tag">Sustainability</span><span class="podcast-tag">Home</span><span class="podcast-tag">Environment</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/casey-markle-uniting-homeowners-and-land-trusts-through-conservation-easements-on-the-house-36/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/casey-markle-uniting-homeowners-and-land-trusts/id1648508806?i=1000629571950" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=JFG-cuD_Ngw" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness health">
+        <p class="podcast-show">Doing Well: The Wellbeing Science Insights Podcast · #36</p>
+        <p class="podcast-title">Abigail Olasehinde: Moving Your Body, Boosting Your Mind</p>
+        <div class="podcast-tags"><span class="podcast-tag">Fitness</span><span class="podcast-tag">Mental Health</span><span class="podcast-tag">Wellbeing</span><span class="podcast-tag">Movement</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/abigail-olasehinde-moving-your-body-boosting-your-mind-doing-well-36/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/abigail-olasehinde-moving-your-body-boosting-your-mind/id1648515329?i=1000629582824" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=D4zSo5-cJl0" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness happiness">
+        <p class="podcast-show">Sero Boost: The Happiness Science Insights Podcast · #36</p>
+        <p class="podcast-title">Paul Thagard: Consciousness, Unity, and Interplay</p>
+        <div class="podcast-tags"><span class="podcast-tag">Philosophy</span><span class="podcast-tag">Consciousness</span><span class="podcast-tag">Happiness</span><span class="podcast-tag">Neuroscience</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/paul-thagard-consciousness-unity-and-interplay-sero-boost-36/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/paul-thagard-consciousness-unity-and-interplay-sero/id1648514660?i=1000629568306" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=PUQCAYkCo60" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast home lifestyle wellness">
+        <p class="podcast-show">Room by Room: The Home Organization Science Insights Podcast · #36</p>
+        <p class="podcast-title">Patricia Lee: Creating Comfortable Temporary Living Spaces That Feel Like Yours</p>
+        <div class="podcast-tags"><span class="podcast-tag">Home Organization</span><span class="podcast-tag">Temporary Living</span><span class="podcast-tag">Interior</span><span class="podcast-tag">Lifestyle</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/patricia-lee-creating-comfortable-temporary-living-space-that-feel-like-yours-room-by-room-36/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/patricia-lee-creating-comfortable-temporary-living/id1648509192?i=1000629567723" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=6tesOfOtWbE" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness health psychology">
+        <p class="podcast-show">Bouncing Back: The Personal Resilience Science Insights Podcast · #36</p>
+        <p class="podcast-title">Alan Fogel, Ph.D.: Body-Mind Connection — Embodied Self-Awareness and Resilience</p>
+        <div class="podcast-tags"><span class="podcast-tag">Resilience</span><span class="podcast-tag">Mind-Body</span><span class="podcast-tag">Self-Awareness</span><span class="podcast-tag">Psychology</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/alan-fogel-ph-d-body-mind-connection-embodied-self-awareness-and-resilience-bouncing-back-36/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/alan-fogel-ph-d-body-mind-connection-embodied-self/id1649518468?i=1000629567433" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=nvOWdzHGf7I" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast parenting wellness psychology">
+        <p class="podcast-show">Raising Parents: The Parenting Science Insights Podcast · #36</p>
+        <p class="podcast-title">George W. Holden, Ph.D: Meta-parenting — What is it and why does it matter</p>
+        <div class="podcast-tags"><span class="podcast-tag">Parenting</span><span class="podcast-tag">Child Development</span><span class="podcast-tag">Psychology</span><span class="podcast-tag">Mindful Parenting</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/george-w-holden-ph-d-meta-parenting-what-is-it-and-why-does-it-matter-raising-parents-36/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/george-w-holden-ph-d-meta-parenting-what-is-it-and/id1648316813?i=1000629582107" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=kroTwc0lBHk" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast family wellness health">
+        <p class="podcast-show">All Together: The Family Science Insights Podcast · #35</p>
+        <p class="podcast-title">Wendy Paris, MSW, MFA: Family Resilience and Well-being After Separation</p>
+        <div class="podcast-tags"><span class="podcast-tag">Family</span><span class="podcast-tag">Separation</span><span class="podcast-tag">Resilience</span><span class="podcast-tag">Wellbeing</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/wendy-paris-msw-mfa-family-resilience-and-well-being-after-separation-all-together-35/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/wendy-paris-msw-mfa-family-resilience-and-well-being/id1648226863?i=1000627946861" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=ks-t9RuFoQM" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness relationships">
+        <p class="podcast-show">Reloscope: The Relationship Science Insights Podcast · #35</p>
+        <p class="podcast-title">Marie Stella Quek: Host Introduction</p>
+        <div class="podcast-tags"><span class="podcast-tag">Relationships</span><span class="podcast-tag">Science</span><span class="podcast-tag">Introduction</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/marie-stella-quek-host-introduction-reloscope-35/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/marie-stella-quek-host-introduction-reloscope-35/id1648297613?i=1000627960762" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=znDV9M2jNIw" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast career productivity wellness">
+        <p class="podcast-show">Work in Progress: The Personal Productivity Science Insights Podcast · #34</p>
+        <p class="podcast-title">Guillermo Campitelli: Improve Decision Making to Promote Productivity</p>
+        <div class="podcast-tags"><span class="podcast-tag">Decision Making</span><span class="podcast-tag">Productivity</span><span class="podcast-tag">Cognitive Science</span><span class="podcast-tag">Career</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/guillermo-campitelli-improve-decision-making-for-promote-productivity-work-in-progress-34/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/prof-guillermo-campitelli-how-to-improve-your-decision/id1648510051?i=1000626410770" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=lCWAbWiWAs4" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness health psychology">
+        <p class="podcast-show">Doing Well: The Wellbeing Science Insights Podcast · #34</p>
+        <p class="podcast-title">Steven M. Sultanoff, Ph.D.: The Healing Power of Humor</p>
+        <div class="podcast-tags"><span class="podcast-tag">Humor</span><span class="podcast-tag">Mental Health</span><span class="podcast-tag">Wellbeing</span><span class="podcast-tag">Psychology</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/steven-m-sultanoff-ph-d-the-healing-power-of-humor-doing-well-34/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/steven-m-sultanoff-ph-d-the-healing-power-of-humor/id1648515329?i=1000626416150" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=py4zk62iIHA" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness health psychology">
+        <p class="podcast-show">Bouncing Back: The Personal Resilience Science Insights Podcast · #34</p>
+        <p class="podcast-title">Ghassani Swaryandini: Autonomy's Role in Help-seeking — From Hesitation to Action</p>
+        <div class="podcast-tags"><span class="podcast-tag">Resilience</span><span class="podcast-tag">Autonomy</span><span class="podcast-tag">Mental Health</span><span class="podcast-tag">Help-Seeking</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/ghassani-swaryandini-autonomys-role-in-help-seeking-from-hesitation-to-action-bouncing-back-34/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/ghassani-swaryandini-autonomys-role-in-help-seeking/id1649518468?i=1000626409550" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=_gdAMc72PDQ" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast parenting health wellness">
+        <p class="podcast-show">Raising Parents: The Parenting Science Insights Podcast · #34</p>
+        <p class="podcast-title">Dr. Anthony Ajayi: Empowering Teens with Pregnancy Support and Education</p>
+        <div class="podcast-tags"><span class="podcast-tag">Parenting</span><span class="podcast-tag">Teens</span><span class="podcast-tag">Health Education</span><span class="podcast-tag">Reproductive Health</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/dr-anthony-ajayi-empowering-teens-with-pregnancy-support-and-education-raising-parents-34/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/dr-anthony-ajayi-nurturing-futures-empowering-teens/id1648316813?i=1000626408505" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=rLV9x7P5Vfg" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast home lifestyle wellness">
+        <p class="podcast-show">On the House: The Household Management Science Insights Podcast · #34</p>
+        <p class="podcast-title">Prof. Piyush Tiwari: Role of Housing and Property in Well-Being After Disasters</p>
+        <div class="podcast-tags"><span class="podcast-tag">Housing</span><span class="podcast-tag">Disaster Recovery</span><span class="podcast-tag">Wellbeing</span><span class="podcast-tag">Home</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/prof-piyush-tiwari-role-of-housing-and-property-in-well-being-after-disasters-on-the-house-34/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/prof-piyush-tiwari-role-of-housing-and-property-in/id1648508806?i=1000626415673" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=mMnrLHfGs-k" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness happiness health">
+        <p class="podcast-show">Sero Boost: The Happiness Science Insights Podcast · #34</p>
+        <p class="podcast-title">Dimitrios Tsatiris, M.D.: Unveiling Fulfillment Through Accomplishments</p>
+        <div class="podcast-tags"><span class="podcast-tag">Happiness</span><span class="podcast-tag">Fulfilment</span><span class="podcast-tag">Achievement</span><span class="podcast-tag">Psychology</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/dimitrios-tsatiris-m-d-unveiling-fulfillment-through-accomplishments-sero-boost-34/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/dimitrios-tsatiris-m-d-unveiling-fulfillment-through/id1648514660?i=1000626414107" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=wZVx4KTgkpg" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast home lifestyle wellness">
+        <p class="podcast-show">Room by Room: The Home Organization Science Insights Podcast · #34</p>
+        <p class="podcast-title">Anna Power: Maximizing Small Floor Plans for Wellness and Functionality</p>
+        <div class="podcast-tags"><span class="podcast-tag">Home Design</span><span class="podcast-tag">Small Spaces</span><span class="podcast-tag">Wellness</span><span class="podcast-tag">Interior</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/anna-power-maximizing-small-floor-plans-for-wellness-and-functionality-room-by-room-34/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/anna-power-maximizing-small-floor-plans-for-wellness/id1648509192?i=1000626409078" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=pWFWZ_gmpAU" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness health productivity">
+        <p class="podcast-show">Doing Well: The Wellbeing Science Insights Podcast · #32</p>
+        <p class="podcast-title">Aditi Kutty: Prioritize Rest, Avoid Burnout</p>
+        <div class="podcast-tags"><span class="podcast-tag">Rest</span><span class="podcast-tag">Burnout</span><span class="podcast-tag">Wellbeing</span><span class="podcast-tag">Mental Health</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/aditi-kutty-prioritize-rest-avoid-burnout-doing-well-32/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/aditi-kutty-prioritize-rest-avoid-burnout-doing-well-32/id1648515329?i=1000624123181" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=j-hZjQBFSYw" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast career tech productivity wellness">
+        <p class="podcast-show">Work in Progress: The Personal Productivity Science Insights Podcast · #32</p>
+        <p class="podcast-title">Naciye G. Uğur: Digital Addiction's Impact on Attention Span and Productivity</p>
+        <div class="podcast-tags"><span class="podcast-tag">Digital Addiction</span><span class="podcast-tag">Productivity</span><span class="podcast-tag">Attention</span><span class="podcast-tag">Tech</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/naciye-g-ugur-digital-addictions-impact-on-attention-span-and-productivity-work-in-progress-32/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/naciye-g-u%C4%9Fur-digital-addictions-impact-on-attention/id1648510051?i=1000624119331" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=zsUP7DyBbE4" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness relationships psychology">
+        <p class="podcast-show">Bouncing Back: The Personal Resilience Science Insights Podcast · #32</p>
+        <p class="podcast-title">Marie Stella Quek: Cultivating Growth and Resilience after Toxic Relationships</p>
+        <div class="podcast-tags"><span class="podcast-tag">Resilience</span><span class="podcast-tag">Toxic Relationships</span><span class="podcast-tag">Personal Growth</span><span class="podcast-tag">Mental Health</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/marie-stella-quek-cultivating-growth-and-resilience-after-toxic-relationships-bouncing-back-32/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/marie-stella-quek-cultivating-growth-and-resilience/id1649518468?i=1000624122014" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=OWP5zZYA8ak" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness happiness health">
+        <p class="podcast-show">Sero Boost: The Happiness Science Insights Podcast · #32</p>
+        <p class="podcast-title">Geoffrey L. Greif, Ph.D.: The Power of Good Friends — Social Support for Happiness</p>
+        <div class="podcast-tags"><span class="podcast-tag">Happiness</span><span class="podcast-tag">Friendship</span><span class="podcast-tag">Social Support</span><span class="podcast-tag">Psychology</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/geoffrey-l-greif-ph-d-the-power-of-good-friends-social-support-for-happiness-sero-boost-32/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/geoffrey-l-greif-ph-d-the-power-of-good/id1648514660?i=1000624122483" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=va23f3TPYbQ" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast career productivity wellness">
+        <p class="podcast-show">Work in Progress: The Personal Productivity Science Insights Podcast · #26</p>
+        <p class="podcast-title">Joahanna Wickramaratne: Host Introduction</p>
+        <div class="podcast-tags"><span class="podcast-tag">Productivity</span><span class="podcast-tag">Career</span><span class="podcast-tag">Introduction</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/joahanna-wickramaratne-host-introduction-work-in-progress-26/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/joahanna-wickramaratne-host-introduction-work-in-progress/id1648510051?i=1000615972537" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=qCSmwM2RM_s" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast wellness health psychology">
+        <p class="podcast-show">Bouncing Back: The Personal Resilience Science Insights Podcast · #26</p>
+        <p class="podcast-title">Joahanna Wickramaratne: Host Introduction</p>
+        <div class="podcast-tags"><span class="podcast-tag">Resilience</span><span class="podcast-tag">Personal Growth</span><span class="podcast-tag">Introduction</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/joahanna-wickramaratne-host-introduction-bouncing-back-26/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/joahanna-wickramaratne-host-introduction-bouncing-back/id1649518468?i=1000615662688" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=BpqE13_JUPM" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="podcast-card" data-cats="podcast home sustainability lifestyle">
+        <p class="podcast-show">On the House: The Household Management Science Insights Podcast · #17</p>
+        <p class="podcast-title">Liz Freisen, B.S. Environ.Econ.Policy., M.S.: Vermicomposting for Home and Garden</p>
+        <div class="podcast-tags"><span class="podcast-tag">Composting</span><span class="podcast-tag">Sustainability</span><span class="podcast-tag">Home</span><span class="podcast-tag">Environment</span></div>
+        <div class="podcast-links">
+          <a class="podcast-link article" href="https://insights.lifemanagementsciencelabs.com/liz-freisen-b-s-environ-econ-policy-m-s-vermicomposting-for-home-and-garden-on-the-house-17/" target="_blank">Article ↗</a>
+          <a class="podcast-link apple" href="https://podcasts.apple.com/gb/podcast/liz-freisen-b-s-environ-econ-policy-m-s-vermicomposting/id1648508806?i=1000603537009" target="_blank">🎧 Apple Podcasts</a>
+          <a class="podcast-link youtube" href="https://www.youtube.com/watch?v=jCX7Ix7tib4" target="_blank">▶ YouTube</a>
+        </div>
+      </div>
+    </div><!-- /grid-podcast -->
+
   </div><!-- /port-content -->
+
+<button id="back-to-top" title="Back to top" aria-label="Back to top">↑</button>
+
 
 </main>
 
@@ -1005,6 +1932,7 @@ const sectionHeaderMap = {
   'lmsl':         document.getElementById('hd-lmsl'),
   'ilms':         document.getElementById('hd-ilms'),
   'academic':     document.getElementById('hd-academic'),
+  'podcast':      document.getElementById('hd-podcast'),
 };
 const comingSoonHeader = document.getElementById('hd-coming-soon');
 
@@ -1043,7 +1971,7 @@ filterBtns.forEach(btn => {
     if (comingSoonHeader) comingSoonHeader.classList.toggle('hidden', !anyComingVisible);
 
     // Ensure newly visible non-coming-soon cards have their animation class
-    document.querySelectorAll('.card:not(.coming-soon):not(.hidden), .acad-card:not(.hidden)').forEach(el => {
+    document.querySelectorAll('.card:not(.coming-soon):not(.hidden), .acad-card:not(.hidden), .podcast-card:not(.hidden)').forEach(el => {
       el.classList.add('visible');
     });
   });
@@ -1068,7 +1996,7 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
 // Stagger animated cards
-document.querySelectorAll('.card:not(.coming-soon), .acad-card').forEach((el, i) => {
+document.querySelectorAll('.card:not(.coming-soon), .acad-card, .podcast-card').forEach((el, i) => {
   el.dataset.delay = (i % 6) * 70;
   observer.observe(el);
 });
@@ -1082,6 +2010,13 @@ document.querySelectorAll('.card.coming-soon').forEach(el => {
 
 // Fade-in for section headers
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+// ── BACK TO TOP
+const btt = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => {
+  btt.classList.toggle('visible', window.scrollY > 500);
+}, { passive: true });
+btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
 </script>
 </body>
 </html>
