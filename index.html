@@ -57,7 +57,7 @@
 :root {
   --primary:    #f3c33b;
   --primary-dk: #7d6c2c;
-  --primary-lt: #FDEEE9;
+  --primary-lt: #fdf4d9;
   --ink:        #111111;
   --dark:       #212529;
   --gray:       #949494;
@@ -95,24 +95,28 @@ h1,h2,h3,h4,h5,h6 {
 /* ── MOBILE MENU BTN ── */
 .menu-btn {
   display: none;
-  position: fixed; top: 20px; right: 20px;
-  width: 26px; height: 26px;
-  cursor: pointer; z-index: 200;
-  margin: 12px;
+  position: fixed; top: 14px; right: 14px;
+  width: 44px; height: 44px;
+  cursor: pointer; z-index: 300;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 10px;
 }
-.menu-btn > span,
-.menu-btn > span::before,
-.menu-btn > span::after {
-  display: block; position: absolute;
-  width: 100%; height: 2px;
+.menu-btn-line {
+  display: block;
+  width: 22px; height: 2px;
   background: var(--ink);
-  transition: .25s;
+  transition: all .25s ease;
+  transform-origin: center;
 }
-.menu-btn > span::before { content:''; top: -8px; }
-.menu-btn > span::after  { content:''; top:  8px; }
-.nav-active .menu-btn > span { transform: rotate(45deg); }
-.nav-active .menu-btn > span::before { top: 0; transform: rotate(0); }
-.nav-active .menu-btn > span::after  { top: 0; transform: rotate(90deg); }
+.nav-active .menu-btn .menu-btn-line:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-active .menu-btn .menu-btn-line:nth-child(2) { opacity: 0; }
+.nav-active .menu-btn .menu-btn-line:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ── SIDEBAR NAV ── */
 header {
@@ -304,7 +308,7 @@ section { position: relative; z-index: 1; }
   cursor: pointer; transition: background .2s;
   display: inline-block;
 }
-.btn-primary-custom:hover { background: var(--primary-dk); color: var(--white); }
+.btn-primary-custom:hover { background: var(--primary-dk); color: var(--white); transform: translateY(-1px); }
 .btn-outline-custom {
   border: 2px solid var(--ink); color: var(--ink);
   padding: 0.8rem 2rem; font-size: 0.85rem;
@@ -501,7 +505,7 @@ section { position: relative; z-index: 1; }
 .accordion-button:not(.collapsed) { color: var(--primary); background: transparent; }
 .accordion-button::after {
   filter: none;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FF534A'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23f3c33b'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
 }
 .accordion-body { padding: 0 0 1.2rem 0; font-size: 0.9rem; color: var(--gray-dk); line-height: 1.8; }
 
@@ -528,7 +532,7 @@ section { position: relative; z-index: 1; }
   justify-content: space-between; align-items: center;
   transition: background .2s;
 }
-.btn-submit:hover { background: var(--primary); }
+.btn-submit:hover { background: var(--primary); color: var(--ink); }
 
 /* ── TESTIMONIALS ── */
 #testimonials { padding: 4rem 0; background: var(--light); }
@@ -558,7 +562,7 @@ footer {
   background: var(--ink); color: rgba(255,255,255,0.45);
   padding: 2rem 3rem;
   display: flex; justify-content: space-between;
-  align-items: center; flex-wrap: gap; gap: 1rem;
+  align-items: center; flex-wrap: wrap; gap: 1rem;
 }
 footer a { color: rgba(255,255,255,0.45); font-size: 0.8rem; }
 footer a:hover { color: var(--primary); }
@@ -576,21 +580,69 @@ footer a:hover { color: var(--primary); }
 .reveal-delay-3 { transition-delay: 0.3s; }
 
 /* ── RESPONSIVE ── */
+.nav-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 98;
+}
+.nav-active .nav-overlay { display: block; }
+
 @media (max-width: 991px) {
-  .menu-btn { display: block; }
+  .menu-btn { display: flex; }
   header {
     transform: translate3d(-100%, 0, 0);
     transition: transform .3s ease;
+    z-index: 200;
   }
   .nav-active header { transform: translate3d(0,0,0); }
-  main { margin-left: 0; }
-  .content-wrap { padding: 0 1.5rem; }
+  main { margin-left: 0; padding-top: 64px; }
+  .content-wrap { padding: 0 1.25rem; }
   .services-grid { grid-template-columns: 1fr 1fr; }
-  .bg-text::after { font-size: 5rem; opacity: 0.025; }
+  .bg-text::after { display: none; }
+  .hero-photo { max-width: 260px; }
+  footer { padding: 1.5rem 1.25rem; flex-direction: column; align-items: flex-start; gap: 0.75rem; }
 }
 @media (max-width: 600px) {
   .services-grid { grid-template-columns: 1fr; }
-  .hero-stats { gap: 1.5rem; }
+  .hero-stats { gap: 1.2rem; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn-primary-custom,
+  .hero-actions .btn-outline-custom { text-align: center; width: 100%; }
+  .footer-links { gap: 0.75rem; }
+}
+
+/* ── EDUCATION: side-by-side grid ── */
+.education-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+@media (max-width: 767px) {
+  .education-grid { grid-template-columns: 1fr; }
+}
+
+/* ── CAREER TOP: QA + Technical Editor side-by-side ── */
+.career-card {
+  background: var(--light);
+  border-top: 3px solid var(--primary);
+  padding: 2rem 1.8rem;
+  height: 100%;
+  transition: box-shadow .25s, transform .25s;
+}
+.career-card:hover {
+  box-shadow: 0 10px 36px rgba(0,0,0,0.07);
+  transform: translateY(-3px);
+}
+.career-top-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+@media (max-width: 767px) {
+  .career-top-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -608,8 +660,15 @@ footer a:hover { color: var(--primary); }
   </defs>
 </svg>
 
+<!-- Nav overlay -->
+<div class="nav-overlay" id="navOverlay"></div>
+
 <!-- MOBILE MENU BUTTON -->
-<a class="menu-btn" id="menuBtn"><span></span></a>
+<button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">
+  <span class="menu-btn-line"></span>
+  <span class="menu-btn-line"></span>
+  <span class="menu-btn-line"></span>
+</button>
 
 <!-- ══ SIDEBAR ══════════════════════════════════════════════════════ -->
 <header id="sidebar">
@@ -626,22 +685,22 @@ footer a:hover { color: var(--primary); }
 
     <div class="sidebar-socials">
       <a href="https://www.facebook.com/putriyuniutami.site/" title="Facebook">
-        <svg width="20" height="20" viewBox="0 0 15 15"><use xlink:href="#facebook"/></svg>
+        <svg width="20" height="20" viewBox="0 0 15 15"><use href="#facebook"/></svg>
       </a>
       <a href="https://twitter.com/putriyuniutami_" title="Twitter / X">
-        <svg width="20" height="20" viewBox="0 0 15 15"><use xlink:href="#twitter"/></svg>
+        <svg width="20" height="20" viewBox="0 0 15 15"><use href="#twitter"/></svg>
       </a>
       <a href="https://www.linkedin.com/in/putri-yuni-utami/" title="LinkedIn">
-        <svg width="20" height="20" viewBox="0 0 24 24"><use xlink:href="#linkedin-icon"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24"><use href="#linkedin-icon"/></svg>
       </a>
       <a href="https://putriyuniutami.substack.com/" title="Substack">
-        <svg width="20" height="20" viewBox="0 0 16 16"><use xlink:href="#substack-icon"/></svg>
+        <svg width="20" height="20" viewBox="0 0 16 16"><use href="#substack-icon"/></svg>
       </a>
       <a href="https://putriyuniutami.wordpress.com/" title="WordPress">
-        <svg width="20" height="20" viewBox="0 0 16 16"><use xlink:href="#wordpress-icon"/></svg>
+        <svg width="20" height="20" viewBox="0 0 16 16"><use href="#wordpress-icon"/></svg>
       </a>
       <a href="https://instagram.com/putriyuniutami_" title="Instagram">
-        <svg width="20" height="20" viewBox="0 0 15 15"><use xlink:href="#instagram"/></svg>
+        <svg width="20" height="20" viewBox="0 0 15 15"><use href="#instagram"/></svg>
       </a>
     </div>
 
@@ -774,17 +833,17 @@ footer a:hover { color: var(--primary); }
           <p class="section-meta">Credentials</p>
         </div>
       </div>
-<!-- Education-->
-  <div class="col-lg-6 reveal">
-      <h2 class="section-title">Education</h2>
+<!-- Education: side by side -->
+      <div class="education-grid">
 
-        <div class="col-12 reveal">
-          <div class="icon-box">
+        <!-- Masters LEFT -->
+        <div class="reveal">
+          <div class="icon-box h-100">
             <span>Aug 2015 – Jul 2019</span>
             <h4>Masters of Art in Linguistics (Translation)</h4>
-            <h3>Universitas Sebelas Maret · GPA 3.78 / 4.0</h3>
-            <p>During my graduate studies I bridged linguistic theory and practical application. I developed a strong command of research methodology and a strategic approach to applied linguistic inquiry. My work focused on the nuanced transfer of meaning across languages. I refined my ability to manage complex translation and documentation projects with analytical rigor.</p>
-          <div class="timeline-badges">
+            <h3 style="font-size:.88rem;font-weight:500;color:var(--gray-dk);margin-bottom:.8rem">Universitas Sebelas Maret &middot; GPA 3.78 / 4.0</h3>
+            <p>During my graduate studies I bridged linguistic theory and practical application. I developed a strong command of research methodology and a strategic approach to applied linguistic inquiry. My work focused on the nuanced transfer of meaning across languages, refining my ability to manage complex translation and documentation projects with analytical rigor.</p>
+            <div class="timeline-badges" style="margin-top:1rem">
               <span class="t-badge">Applied Linguistics</span>
               <span class="t-badge">Translation Studies</span>
               <span class="t-badge">Systemic Functional Linguistics</span>
@@ -794,14 +853,15 @@ footer a:hover { color: var(--primary); }
             </div>
           </div>
         </div>
-        <br>
-          <div class="col-12 reveal">
-          <div class="icon-box">
+
+        <!-- Bachelor RIGHT -->
+        <div class="reveal reveal-delay-1">
+          <div class="icon-box h-100">
             <span>Aug 2009 – Jun 2014</span>
             <h4>Bachelor of English Language Education</h4>
-            <h3>Universitas Ahmad Dahlan · GPA 3.73 / 4.0</h3>
+            <h3 style="font-size:.88rem;font-weight:500;color:var(--gray-dk);margin-bottom:.8rem">Universitas Ahmad Dahlan &middot; GPA 3.73 / 4.0</h3>
             <p>My academic foundation was built around pedagogy and linguistic analysis. I developed a robust toolkit for deconstructing spoken and written English texts, translating theory into effective teaching strategies. Integrating applied linguistics with ELT gave me hands-on experience designing lesson plans that prioritised sound pedagogical principles and student engagement.</p>
-          <div class="timeline-badges">
+            <div class="timeline-badges" style="margin-top:1rem">
               <span class="t-badge">ELT</span>
               <span class="t-badge">Teaching English as a Foreign Language</span>
               <span class="t-badge">Journalism</span>
@@ -811,65 +871,71 @@ footer a:hover { color: var(--primary); }
             </div>
           </div>
         </div>
+
+      </div><!-- /education-grid -->
     </section>
     
-        <!-- Experience -->
-     <section id="career" class="bg-text py-5" data-text="02">
-      <div class="row mb-5 reveal">
+        <!-- Career -->
+    <section id="career" class="bg-text py-5" data-text="02">
+      <div class="row mb-4 reveal">
         <div class="col-12">
           <p class="section-meta">Career Timeline</p>
+          <h2 class="section-title">Where I've Built My Craft</h2>
+          <p style="color:var(--gray-dk);font-size:.88rem;margin-top:.5rem;max-width:600px">A track record of high-impact contributions across research institutions, media organizations, and translation agencies.</p>
         </div>
       </div>
-        <div class="col-lg-6 reveal reveal-delay-1">
-          <h2 class="section-title">Where I've Built My Craft</h2>
-          <p style="color:var(--gray-dk);font-size:.88rem;margin-bottom:1.5rem">A track record of high-impact contributions across research institutions, media organizations, and translation agencies.</p>
 
-          <div class="timeline-block">
-            <div class="timeline-date">Aug 2024 – Apr 2026</div>
-            <div class="timeline-title">QA Specialist</div>
-            <div class="timeline-company">Life Management Science Labs</div>
-            <div class="timeline-body">
-              I managed end-to-end review and production of 4 Research Vaults and 2 standard documents monthly. I evaluated and approved 10 Compendiums and 2 Protocols each month. I ensured 100% compliance with technical specifications and ethical guidelines. I audited 5–15 documents monthly and sustained a 98% proofreading accuracy rate.
-              <br><br>
-             I collaborated with Technical Editors to implement 75% of suggested process improvements quarterly. I maintained complete records of all assessments in Asana. I consolidated complex research data into publication-ready repositories. 
-            </div>
-            <div class="timeline-badges">
-              <span class="t-badge">98% Accuracy</span>
-              <span class="t-badge">10 Compendiums/Month</span>
-              <span class="t-badge">4 Research Vaults/Month</span>
-              <span class="t-badge">2–4 Standard Documents/Month</span>
-              <span class="t-badge">Content QA</span>
-              <span class="t-badge">100% Compliance</span>
-              <span class="t-badge">Content QA</span>
-              <span class="t-badge">Cross-functional collaboration</span>
-            </div>
+      <!-- QA + Technical Editor: side by side -->
+      <div class="career-top-grid">
+
+        <!-- QA Specialist LEFT -->
+        <div class="career-card reveal">
+          <div class="timeline-date">Aug 2024 – Apr 2026</div>
+          <div class="timeline-title">QA Specialist</div>
+          <div class="timeline-company">Life Management Science Labs</div>
+          <div class="timeline-body">
+            I managed end-to-end review and production of 4 Research Vaults and 2 standard documents monthly. I evaluated and approved 10 Compendiums and 2 Protocols each month. I ensured 100% compliance with technical specifications and ethical guidelines. I audited 5–15 documents monthly and sustained a 98% proofreading accuracy rate.
+            <br><br>
+            I collaborated with Technical Editors to implement 75% of suggested process improvements quarterly. I maintained complete records of all assessments in Asana and consolidated complex research data into publication-ready repositories.
           </div>
-
-          <div class="timeline-block">
-            <div class="timeline-date">Aug 2023 – Jul 2024</div>
-            <div class="timeline-title">Technical Editor</div>
-            <div class="timeline-company">Life Management Science Labs</div>
-            <div class="timeline-body">
-              I interpreted complex research handover documents to author high-quality publications, producing four major technical documents monthly for specific academic audiences. I partnered with Junior and Senior Researchers to ensure 100% accuracy in content, style, and technical specifications.
-              <br><br>
-              I developed standardized document templates that reduced the team's formatting time by 20%, managed website technical content, and delivered actionable editorial feedback to research teams.
-            </div>
-            <div class="timeline-badges">
-              <span class="t-badge">4 Publications/Month</span>
-              <span class="t-badge">20% Efficiency Gain</span>
-              <span class="t-badge">100% Spec Accuracy</span>
-              <span class="t-badge">Technical editor</span>
-              <span class="t-badge">Scientific writing</span>
-              <span class="t-badge">Technical writing</span>
-              <span class="t-badge">Website content</span>
-            </div>
+          <div class="timeline-badges">
+            <span class="t-badge">98% Accuracy</span>
+            <span class="t-badge">10 Compendiums/Month</span>
+            <span class="t-badge">4 Research Vaults/Month</span>
+            <span class="t-badge">2–4 Standard Documents/Month</span>
+            <span class="t-badge">Content QA</span>
+            <span class="t-badge">100% Compliance</span>
+            <span class="t-badge">Cross-functional Collaboration</span>
           </div>
-      </div>
+        </div>
 
-      <div class="row g-5 mt-1">
+        <!-- Technical Editor RIGHT -->
+        <div class="career-card reveal reveal-delay-1">
+          <div class="timeline-date">Aug 2023 – Jul 2024</div>
+          <div class="timeline-title">Technical Editor</div>
+          <div class="timeline-company">Life Management Science Labs</div>
+          <div class="timeline-body">
+            I interpreted complex research handover documents to author high-quality publications, producing four major technical documents monthly for specific academic audiences. I partnered with Junior and Senior Researchers to ensure 100% accuracy in content, style, and technical specifications.
+            <br><br>
+            I developed standardized document templates that reduced the team's formatting time by 20%, managed website technical content, and delivered actionable editorial feedback to research teams.
+          </div>
+          <div class="timeline-badges">
+            <span class="t-badge">4 Publications/Month</span>
+            <span class="t-badge">20% Efficiency Gain</span>
+            <span class="t-badge">100% Spec Accuracy</span>
+            <span class="t-badge">Technical Editor</span>
+            <span class="t-badge">Scientific Writing</span>
+            <span class="t-badge">Technical Writing</span>
+            <span class="t-badge">Website Content</span>
+          </div>
+        </div>
+
+      </div><!-- /career-top-grid -->
+
+      <div class="row g-5 mt-2">
         <!-- Previous Experience Left -->
-         <div class="col-lg-6 reveal">
-          <h2 class="section-title mb-4">Previous Experiences</h2>
+        <div class="col-12 reveal"><h2 class="section-title mb-4" style="font-size:clamp(1.6rem,3.5vw,2.4rem)">Previous Experiences</h2></div>
+        <div class="col-lg-6 reveal">
 
           <div class="timeline-block">
             <div class="timeline-date">May 2022 – Sep 2023</div>
@@ -1364,7 +1430,6 @@ footer a:hover { color: var(--primary); }
 
     <!-- ══ TESTIMONIALS ══ -->
     <section id="testimonials" class="py-5" style="background:var(--light)">
-      <section id="home" class="bg-text py-5" data-text="06"></section>
       <p class="section-meta reveal">Recommendations</p>
       <h2 class="section-title reveal mb-4">What People Say</h2>
 
@@ -1419,11 +1484,15 @@ footer a:hover { color: var(--primary); }
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 // ── MOBILE MENU
-document.getElementById('menuBtn').addEventListener('click', () => {
-  document.body.classList.toggle('nav-active');
-});
+const menuBtn = document.getElementById('menuBtn');
+const navOverlay = document.getElementById('navOverlay');
+function toggleNav(force) {
+  document.body.classList.toggle('nav-active', force);
+}
+menuBtn.addEventListener('click', () => toggleNav());
+if (navOverlay) navOverlay.addEventListener('click', () => toggleNav(false));
 document.querySelectorAll('#one-page-menu .nav-link').forEach(link => {
-  link.addEventListener('click', () => document.body.classList.remove('nav-active'));
+  link.addEventListener('click', () => toggleNav(false));
 });
 
 // ── ACTIVE NAV on scroll
@@ -1451,15 +1520,16 @@ const skillObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       e.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
-        const w = bar.dataset.width;
+        const w = parseFloat(bar.dataset.width);
         setTimeout(() => {
           bar.style.transform = `scaleX(${w})`;
           bar.classList.add('animated');
         }, 200);
       });
+      skillObserver.unobserve(e.target);
     }
   });
-}, { threshold: 0.3 });
+}, { threshold: 0.2 });
 document.querySelectorAll('#experience .col-lg-6').forEach(el => skillObserver.observe(el));
 
 // ── NAV shadow on scroll
