@@ -534,6 +534,39 @@ section { position: relative; z-index: 1; }
 }
 .btn-submit:hover { background: var(--primary); color: var(--ink); }
 
+.form-submit { margin-top: 1.5rem; }
+.form-privacy {
+  font-size: 0.75rem; color: var(--gray-dk);
+  margin-top: 0.75rem; opacity: 0.8;
+}
+
+/* ── FORM SUCCESS STATE ── */
+.form-success {
+  text-align: center;
+  padding: 3rem 2rem;
+  border: 2px solid var(--primary);
+  background: var(--light);
+  animation: fadeInUp .5s ease forwards;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.form-success-icon {
+  width: 3rem; height: 3rem; line-height: 3rem;
+  background: var(--primary); color: var(--ink);
+  font-size: 1.4rem; font-weight: 700;
+  border-radius: 50%; margin: 0 auto 1.25rem;
+}
+.form-success-title {
+  font-size: 1.25rem; font-weight: 700;
+  letter-spacing: 0.04em; margin-bottom: 0.75rem;
+}
+.form-success-msg {
+  font-size: 0.9rem; color: var(--gray-dk);
+  line-height: 1.7; margin-bottom: 0;
+}
+
 /* ── TESTIMONIALS ── */
 #testimonials { padding: 4rem 0; background: var(--light); }
 
@@ -1439,11 +1472,22 @@ Saya juga menyediakan <strong>jasa prioritas </strong> jika Anda memiliki kebutu
               <label class="form-label">Ringkasan Proyek </label>
               <textarea name="message" rows="5" placeholder="Ceritakan tentang proyek Anda; jenis dokumen, jumlah kata, tenggat waktu, dan persyaratan khusus…" class="form-control" required></textarea>
             </div>
-            <button type="submit" class="btn-submit">
-              <span>Kirim Pesan</span>
-              <span>→</span>
-            </button>
+            <div class="form-submit">
+              <button class="btn-submit" id="submitBtn" type="submit" aria-describedby="form-privacy-note">
+                <span>Kirim Aplikasi Saya</span>
+                <span aria-hidden="true">→</span>
+              </button>
+              <p class="form-privacy" id="form-privacy-note">🔒 Informasi Anda dijaga kerahasiaannya dan tidak pernah dibagikan kepada pihak ketiga.</p>
+            </div>
           </form>
+
+          <!-- ── SUCCESS STATE (shown after submission) ── -->
+          <div class="form-success" id="formSuccess" hidden>
+            <div class="form-success-icon" aria-hidden="true">✓</div>
+            <h3 class="form-success-title">Aplikasi Terkirim!</h3>
+            <p class="form-success-msg">Terima kasih telah menghubungi saya. Saya akan meninjau proyek Anda dan menghubungi Anda dalam 1–2 hari kerja.</p>
+            <p class="form-privacy">🔒 Informasi Anda dijaga kerahasiaannya dan tidak pernah dibagikan kepada pihak ketiga.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -1557,6 +1601,37 @@ window.addEventListener('scroll', () => {
   document.getElementById('sidebar').style.boxShadow =
     window.scrollY > 20 ? '2px 0 16px rgba(0,0,0,0.06)' : '';
 }, { passive: true });
+
+// ── CONTACT FORM submission
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.querySelector('span').textContent = 'Mengirim…';
+
+    try {
+      const res = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        contactForm.hidden = true;
+        document.getElementById('formSuccess').hidden = false;
+      } else {
+        btn.disabled = false;
+        btn.querySelector('span').textContent = 'Kirim Aplikasi Saya';
+        alert('Terjadi kesalahan. Silakan coba lagi.');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.querySelector('span').textContent = 'Kirim Aplikasi Saya';
+      alert('Kesalahan jaringan. Periksa koneksi Anda dan coba lagi.');
+    }
+  });
+}
 </script>
 </body>
 </html>
